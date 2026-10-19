@@ -411,14 +411,28 @@ Menghitung total biaya per paket dan mengakumulasi data untuk rekapitulasi (juml
 					<p><strong>Output:</strong> <span class="placeholder">Rincian biaya per paket serta laporan rekapitulasi pengiriman keseluruhan.</span></p>
 				</article>
 			</div>
-			<div class="callout"><strong>Variabel dan tipe data:</strong> lengkapi tabel berikut dengan nama variabel, tipe data, nilai awal bila ada, dan kegunaannya.</div>
+			<div class="callout"><strong>Variabel dan tipe data:</strong> tabel berikut memuat variabel input dan variabel yang digunakan dalam perhitungan biaya pengiriman.</div>
 			<div class="table-wrap" style="margin-top: 14px">
 				<table>
 					<thead><tr><th>Nama variabel</th><th>Tipe data</th><th>Nilai / rentang</th><th>Kegunaan</th></tr></thead>
 					<tbody>
-						<tr><td>[nama_variabel]</td><td>[integer / string / ...]</td><td>[nilai atau rentang]</td><td>[keterangan]</td></tr>
-						<tr><td>[nama_variabel]</td><td>[integer / string / ...]</td><td>[nilai atau rentang]</td><td>[keterangan]</td></tr>
-						<tr><td>[nama_variabel]</td><td>[integer / string / ...]</td><td>[nilai atau rentang]</td><td>[keterangan]</td></tr>
+						<tr><td><code>nomor_paket</code></td><td><code>string</code></td><td>Diisi pengguna</td><td>Menyimpan nomor atau identitas paket.</td></tr>
+						<tr><td><code>nilai_barang</code></td><td><code>double</code></td><td>Diisi pengguna (Rp)</td><td>Menyimpan nilai barang sebagai dasar perhitungan asuransi.</td></tr>
+						<tr><td><code>Berat_aktual</code></td><td><code>double</code></td><td>Diisi pengguna (kg)</td><td>Menyimpan berat aktual paket.</td></tr>
+						<tr><td><code>panjang</code></td><td><code>double</code></td><td>Diisi pengguna (cm)</td><td>Menyimpan panjang paket untuk menghitung berat volumetrik.</td></tr>
+						<tr><td><code>lebar</code></td><td><code>double</code></td><td>Diisi pengguna (cm)</td><td>Menyimpan lebar paket untuk menghitung berat volumetrik.</td></tr>
+						<tr><td><code>tinggi</code></td><td><code>double</code></td><td>Diisi pengguna (cm)</td><td>Menyimpan tinggi paket untuk menghitung berat volumetrik.</td></tr>
+						<tr><td><code>zona_tujuan</code></td><td><code>char</code></td><td>A, B, atau C; huruf kecil diubah menjadi huruf besar</td><td>Menyimpan zona tujuan untuk menentukan tarif per kilogram.</td></tr>
+						<tr><td><code>jenis_pelayanan</code></td><td><code>int</code></td><td>1 = Reguler; 2 = Prioritas</td><td>Menyimpan jenis layanan yang dipilih pengguna.</td></tr>
+						<tr><td><code>Pilihan_asuransi</code></td><td><code>char</code></td><td>Y = menggunakan; N = tidak menggunakan</td><td>Menyimpan pilihan asuransi; huruf kecil Y juga diterima.</td></tr>
+						<tr><td><code>berat_volumetrik</code></td><td><code>double</code></td><td>(panjang × lebar × tinggi) / 6000</td><td>Menyimpan hasil perhitungan berat volumetrik paket.</td></tr>
+						<tr><td><code>berat_maksimal</code></td><td><code>double</code></td><td>Nilai terbesar antara berat aktual dan volumetrik</td><td>Menyimpan berat yang digunakan sebelum dibulatkan.</td></tr>
+						<tr><td><code>berat_tagihan</code></td><td><code>double</code></td><td>Pembulatan ke atas dari <code>berat_maksimal</code></td><td>Menyimpan berat yang ditagihkan.</td></tr>
+						<tr><td><code>tarifperKg</code></td><td><code>double</code></td><td>Awal 0; zona A = Rp8.000, B = Rp12.000, C = Rp18.000</td><td>Menyimpan tarif per kilogram sesuai zona tujuan.</td></tr>
+						<tr><td><code>biaya_dasar</code></td><td><code>double</code></td><td><code>berat_tagihan × tarifperKg</code></td><td>Menyimpan biaya pengiriman sebelum tambahan layanan dan asuransi.</td></tr>
+						<tr><td><code>biaya_tambahan</code></td><td><code>double</code></td><td>Awal 0; 40% dari biaya dasar untuk layanan Prioritas</td><td>Menyimpan biaya tambahan berdasarkan jenis pelayanan.</td></tr>
+						<tr><td><code>biaya_asuransi</code></td><td><code>double</code></td><td>Awal 0; 1% dari nilai barang, minimum Rp5.000 jika dipilih</td><td>Menyimpan biaya asuransi paket.</td></tr>
+						<tr><td><code>total_biaya</code></td><td><code>double</code></td><td><code>biaya_dasar + biaya_tambahan + biaya_asuransi</code></td><td>Menyimpan total biaya yang harus dibayar.</td></tr>
 					</tbody>
 				</table>
 			</div>
