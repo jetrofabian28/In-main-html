@@ -1,175 +1,622 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="A simple home page published with GitHub Pages.">
-	<title>Hello, GitHub Pages</title>
+	<meta name="description" content="Dokumentasi Proyek UTS Algoritma dan Pengantar Pemrograman SSI1144.">
+	<meta name="theme-color" content="#102a2a">
+	<title>Dokumentasi Proyek UTS | SSI1144</title>
 	<style>
 		:root {
 			color-scheme: light;
-			--ink: #18342d;
-			--muted: #53645d;
-			--paper: #f5f7f2;
-			--accent: #d7ef72;
-			--line: #dce3d9;
+			--ink: #173333;
+			--muted: #607373;
+			--paper: #f5f7f3;
+			--surface: #fff;
+			--accent: #c6ed75;
+			--accent-dark: #456341;
+			--line: #dce5df;
+			--soft: #edf3eb;
+			--shadow: 0 16px 44px rgb(23 51 51 / 7%);
 		}
 
 		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; scroll-padding-top: 92px; }
 
 		body {
-			min-height: 100vh;
 			margin: 0;
-			display: grid;
-			grid-template-rows: auto 1fr auto;
 			background: var(--paper);
 			color: var(--ink);
-			font-family: Georgia, "Times New Roman", serif;
-		}
-
-		header, footer {
-			width: min(100% - 48px, 1080px);
-			margin-inline: auto;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-		}
-
-		header {
-			min-height: 82px;
-			border-bottom: 1px solid var(--line);
-			font-family: "Segoe UI", sans-serif;
-			font-size: 14px;
-		}
-
-		.mark {
-			display: inline-flex;
-			align-items: center;
-			gap: 10px;
-			font-weight: 700;
-		}
-
-		.mark-icon {
-			width: 30px;
-			aspect-ratio: 1;
-			display: grid;
-			place-items: center;
-			border-radius: 50%;
-			background: var(--accent);
-			font-size: 16px;
+			font-family: "Segoe UI", Arial, sans-serif;
+			line-height: 1.65;
 		}
 
 		a { color: inherit; }
-
-		header a {
-			text-decoration-thickness: 1px;
-			text-underline-offset: 4px;
-		}
-
-		main {
-			width: min(100% - 48px, 1080px);
-			margin: auto;
-			padding-block: clamp(72px, 15vh, 150px);
-			animation: arrive 600ms ease-out both;
-		}
-
-		.eyebrow {
-			margin: 0 0 22px;
-			color: var(--muted);
-			font: 700 12px/1.4 "Segoe UI", sans-serif;
-			letter-spacing: 1.4px;
-			text-transform: uppercase;
-		}
-
-		h1 {
-			max-width: 760px;
-			margin: 0;
-			font-size: clamp(52px, 9vw, 112px);
-			font-weight: 400;
-			line-height: .98;
-		}
-
-		h1 span {
-			display: block;
-			color: #557246;
-			font-style: italic;
-		}
-
-		.intro {
-			max-width: 510px;
-			margin: 30px 0 0;
-			color: var(--muted);
-			font: 18px/1.7 "Segoe UI", sans-serif;
-		}
-
-		.button {
-			min-height: 48px;
-			margin-top: 34px;
-			padding: 0 20px;
-			display: inline-flex;
-			align-items: center;
-			gap: 12px;
-			border-radius: 3px;
-			background: var(--ink);
-			color: white;
-			font: 600 14px "Segoe UI", sans-serif;
-			text-decoration: none;
-			transition: background 160ms ease, transform 160ms ease;
-		}
-
-		.button:hover {
-			transform: translateY(-2px);
-			background: #2c5748;
-		}
-
-		.button:focus-visible, header a:focus-visible {
-			outline: 3px solid #779348;
+		a:focus-visible, button:focus-visible {
+			outline: 3px solid #76984b;
 			outline-offset: 4px;
 		}
 
-		footer {
-			min-height: 68px;
-			border-top: 1px solid var(--line);
-			color: var(--muted);
-			font: 13px "Segoe UI", sans-serif;
+		.site-header {
+			position: sticky;
+			z-index: 10;
+			top: 0;
+			border-bottom: 1px solid var(--line);
+			background: rgb(245 247 243 / 94%);
+			backdrop-filter: blur(14px);
 		}
 
-		@keyframes arrive {
-			from { opacity: 0; transform: translateY(12px); }
-			to { opacity: 1; transform: translateY(0); }
+		.header-inner, main, .footer-inner {
+			width: min(100% - 48px, 1120px);
+			margin-inline: auto;
+		}
+
+		.header-inner {
+			min-height: 76px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 24px;
+		}
+
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			flex: 0 0 auto;
+			font-size: 14px;
+			font-weight: 750;
+			text-decoration: none;
+		}
+
+		.brand-mark {
+			width: 36px;
+			height: 36px;
+			display: grid;
+			place-items: center;
+			border-radius: 11px;
+			background: var(--ink);
+			color: var(--accent);
+			font-size: 18px;
+		}
+
+		nav {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+			overflow-x: auto;
+			padding: 8px 2px;
+			font-size: 12px;
+			font-weight: 650;
+			white-space: nowrap;
+			scrollbar-width: thin;
+		}
+
+		nav a { color: var(--muted); text-decoration: none; }
+		nav a:hover { color: var(--ink); }
+
+		main { padding-block: 44px 88px; }
+
+		.hero {
+			position: relative;
+			overflow: hidden;
+			padding: clamp(32px, 7vw, 76px);
+			border-radius: 24px;
+			background: var(--ink);
+			color: white;
+			box-shadow: var(--shadow);
+		}
+
+		.hero::after {
+			position: absolute;
+			right: -105px;
+			bottom: -190px;
+			width: 430px;
+			height: 430px;
+			border: 1px solid rgb(198 237 117 / 22%);
+			border-radius: 50%;
+			box-shadow: 0 0 0 42px rgb(198 237 117 / 5%), 0 0 0 84px rgb(198 237 117 / 4%);
+			content: "";
+			pointer-events: none;
+		}
+
+		.hero-content { position: relative; z-index: 1; max-width: 760px; }
+		.eyebrow {
+			margin: 0 0 14px;
+			color: var(--accent-dark);
+			font-size: 11px;
+			font-weight: 800;
+			letter-spacing: 1.5px;
+			text-transform: uppercase;
+		}
+
+		.hero .eyebrow { color: var(--accent); }
+		h1, h2, h3, p { margin-top: 0; }
+		h1 {
+			max-width: 720px;
+			margin-bottom: 18px;
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: clamp(42px, 7vw, 76px);
+			font-weight: 400;
+			letter-spacing: -2px;
+			line-height: 1.04;
+		}
+
+		h1 span { color: var(--accent); font-style: italic; }
+		.hero-description { max-width: 620px; margin-bottom: 24px; color: #d0ddda; font-size: 16px; }
+		.hero-meta { display: flex; flex-wrap: wrap; gap: 10px; }
+		.pill {
+			display: inline-flex;
+			align-items: center;
+			min-height: 30px;
+			padding: 4px 11px;
+			border: 1px solid rgb(255 255 255 / 22%);
+			border-radius: 99px;
+			color: #e0e9e4;
+			font-size: 11px;
+			font-weight: 650;
+		}
+
+		.button {
+			display: inline-flex;
+			align-items: center;
+			gap: 9px;
+			min-height: 44px;
+			margin-top: 25px;
+			padding: 0 16px;
+			border-radius: 8px;
+			background: var(--accent);
+			color: var(--ink);
+			font-size: 13px;
+			font-weight: 750;
+			text-decoration: none;
+			transition: transform 160ms ease, background 160ms ease;
+		}
+
+		.button:hover { transform: translateY(-2px); background: #d7f49a; }
+		.section { padding-top: 72px; }
+		.section-heading { max-width: 700px; margin-bottom: 24px; }
+		.section-heading h2 {
+			margin-bottom: 8px;
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: clamp(30px, 4vw, 42px);
+			font-weight: 400;
+			letter-spacing: -.7px;
+			line-height: 1.15;
+		}
+
+		.section-heading > p:last-child, .muted { color: var(--muted); }
+		.section-heading > p:last-child { margin-bottom: 0; }
+		.grid { display: grid; gap: 16px; }
+		.grid-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.grid-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+		.card {
+			min-width: 0;
+			padding: 22px;
+			border: 1px solid var(--line);
+			border-radius: 14px;
+			background: var(--surface);
+			box-shadow: 0 5px 20px rgb(23 51 51 / 3%);
+		}
+
+		.card h3 { margin-bottom: 10px; font-size: 16px; line-height: 1.35; }
+		.card p:last-child, .card ul:last-child { margin-bottom: 0; }
+		.card p, .card li { color: var(--muted); font-size: 13px; }
+		.card ul { padding-left: 19px; }
+		.card li + li { margin-top: 6px; }
+		.card-label {
+			display: block;
+			margin-bottom: 9px;
+			color: var(--accent-dark);
+			font-size: 10px;
+			font-weight: 800;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+		}
+
+		.placeholder {
+			color: #667a68;
+			font-style: italic;
+		}
+
+		.member-list { display: grid; gap: 10px; }
+		.member {
+			display: flex;
+			justify-content: space-between;
+			gap: 12px;
+			padding-bottom: 9px;
+			border-bottom: 1px solid var(--line);
+			font-size: 13px;
+		}
+
+		.member:last-child { padding-bottom: 0; border: 0; }
+		.member span:last-child { color: var(--muted); }
+		.callout {
+			margin-top: 16px;
+			padding: 18px 20px;
+			border-left: 3px solid #a7cd62;
+			border-radius: 0 10px 10px 0;
+			background: var(--soft);
+			color: var(--muted);
+			font-size: 13px;
+		}
+
+		.callout strong { color: var(--ink); }
+		.flow-placeholder {
+			min-height: 180px;
+			display: grid;
+			place-items: center;
+			padding: 24px;
+			border: 1px dashed #aebfb3;
+			border-radius: 10px;
+			background: #f8faf7;
+			color: var(--muted);
+			text-align: center;
+			font-size: 13px;
+		}
+
+		.flow-placeholder strong { display: block; margin-bottom: 5px; color: var(--ink); }
+		.code-placeholder {
+			overflow-x: auto;
+			margin: 0;
+			padding: 18px;
+			border-radius: 10px;
+			background: #142b2a;
+			color: #dcebdc;
+			font: 12px/1.7 Consolas, "Courier New", monospace;
+			white-space: pre-wrap;
+		}
+
+		.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: white; }
+		table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; }
+		th, td { min-width: 110px; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+		th { background: var(--soft); color: var(--ink); font-size: 11px; }
+		td { color: var(--muted); }
+		tbody tr:last-child td { border-bottom: 0; }
+		.stack { display: grid; gap: 16px; }
+		.small-note { margin: 9px 0 0; color: var(--muted); font-size: 11px; }
+
+		footer { border-top: 1px solid var(--line); }
+		.footer-inner {
+			min-height: 72px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		@media (max-width: 760px) {
+			.header-inner { align-items: flex-start; flex-direction: column; gap: 0; padding-block: 12px 8px; }
+			nav { width: 100%; gap: 17px; }
+			.grid-three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+			.section { padding-top: 58px; }
+		}
+
+		@media (max-width: 560px) {
+			.header-inner, main, .footer-inner { width: min(100% - 32px, 1120px); }
+			.hero { border-radius: 17px; }
+			.hero-description { font-size: 14px; }
+			.grid-two, .grid-three { grid-template-columns: 1fr; }
+			.card { padding: 18px; }
+			.footer-inner { align-items: flex-start; flex-direction: column; justify-content: center; padding-block: 15px; }
 		}
 
 		@media (prefers-reduced-motion: reduce) {
-			*, *::before, *::after {
-				animation-duration: .01ms !important;
-				transition-duration: .01ms !important;
-			}
-		}
-
-		@media (max-width: 520px) {
-			header, footer, main { width: min(100% - 36px, 1080px); }
-			header { min-height: 70px; }
-			.intro { font-size: 16px; }
-			footer { gap: 12px; font-size: 12px; }
+			*, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 		}
 	</style>
 </head>
 <body>
-	<header>
-		<div class="mark"><span class="mark-icon" aria-hidden="true">✳</span> Fabian Jethro Falah Kalangi</div>
-		<a href="https://github.com/jetrofabian28/uts_alpro-Kelompok-4">Find me on GitHub <span aria-hidden="true">↗</span></a>
+	<header class="site-header">
+		<div class="header-inner">
+			<a class="brand" href="#beranda">
+				<span class="brand-mark" aria-hidden="true">A</span>
+				<span>Dokumentasi Proyek UTS</span>
+			</a>
+			<nav aria-label="Navigasi utama">
+				<a href="#beranda">Beranda</a>
+				<a href="#analisis">Analisis</a>
+				<a href="#modul-a">Modul A</a>
+				<a href="#modul-b">Modul B</a>
+				<a href="#integrasi">Program Terintegrasi</a>
+				<a href="#refleksi">Refleksi</a>
+				<a href="#penggunaan-ai">Penggunaan AI</a>
+			</nav>
+		</div>
 	</header>
 
 	<main>
-		<p class="eyebrow">A small page on the internet</p>
-		<h1>Hello, world.<span>Glad you're here.</span></h1>
-		<p class="intro">This is my home on the web, published with GitHub Pages. A place for projects, notes, and whatever comes next.</p>
-		<a class="button" href="https://docs.github.com/pages">Explore GitHub Pages <span aria-hidden="true">→</span></a>
+		<section class="hero" id="beranda" aria-labelledby="judul-proyek">
+			<div class="hero-content">
+				<p class="eyebrow">Proyek UTS · Halaman 5 · SSI1144</p>
+				<h1 id="judul-proyek">Algoritma dan <span>Pengantar Pemrograman</span></h1>
+				<p class="hero-description">Dokumentasi proyek dan studi kasus. Ganti teks bertanda kurung siku dengan informasi kelompok, rancangan, dan hasil pengerjaan Anda.</p>
+				<div class="hero-meta">
+					<span class="pill">Mata kuliah: SSI1144</span>
+					<span class="pill">Studi kasus: [Nama studi kasus]</span>
+				</div>
+				<a class="button" href="[URL_REPOSITORY]" aria-label="Buka repository proyek di GitHub">Lihat repository GitHub <span aria-hidden="true">↗</span></a>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="tentang-proyek">
+			<div class="section-heading">
+				<p class="eyebrow">01 · Beranda</p>
+				<h2 id="tentang-proyek">Tentang proyek</h2>
+				<p>Ringkasan identitas proyek, studi kasus, anggota tim, dan aplikasi yang dikembangkan.</p>
+			</div>
+			<div class="grid grid-two">
+				<article class="card">
+					<span class="card-label">Identitas proyek</span>
+					<h3>[Judul proyek]</h3>
+					<p><strong>Mata kuliah:</strong> SSI1144 — Algoritma dan Pengantar Pemrograman</p>
+					<p><strong>Studi kasus:</strong> <span class="placeholder">[Nama studi kasus]</span></p>
+					<p><strong>Repository:</strong> <a href="[URL_REPOSITORY]">[Tautan repository GitHub]</a></p>
+					<p><strong>Deskripsi aplikasi:</strong> <span class="placeholder">[Jelaskan fungsi aplikasi secara singkat.]</span></p>
+				</article>
+				<article class="card">
+					<span class="card-label">Anggota kelompok</span>
+					<h3>Tim proyek</h3>
+					<div class="member-list">
+						<div class="member"><span>[Nama anggota 1]</span><span>NIM: [NIM]</span></div>
+						<div class="member"><span>[Nama anggota 2]</span><span>NIM: [NIM]</span></div>
+						<div class="member"><span>[Nama anggota 3]</span><span>NIM: [NIM]</span></div>
+						<div class="member"><span>[Nama anggota 4]</span><span>NIM: [NIM]</span></div>
+					</div>
+					<p class="small-note">Tambah atau hapus baris anggota sesuai jumlah anggota kelompok.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="section" id="analisis" aria-labelledby="judul-analisis">
+			<div class="section-heading">
+				<p class="eyebrow">02 · Analisis Masalah</p>
+				<h2 id="judul-analisis">Memahami masalah sebelum membangun solusi</h2>
+				<p>Uraikan kebutuhan yang melatarbelakangi program, siapa yang menggunakannya, dan bagaimana data diolah.</p>
+			</div>
+			<div class="grid grid-two">
+				<article class="card">
+					<span class="card-label">Konteks</span>
+					<h3>Latar belakang dan rumusan masalah</h3>
+					<p><strong>Latar belakang:</strong> <span class="placeholder">[Jelaskan situasi atau kebutuhan yang menjadi alasan program dibuat.]</span></p>
+					<p><strong>Rumusan masalah:</strong> <span class="placeholder">[Tuliskan masalah utama yang ingin diselesaikan.]</span></p>
+				</article>
+				<article class="card">
+					<span class="card-label">Sasaran</span>
+					<h3>Tujuan dan pengguna program</h3>
+					<p><strong>Tujuan:</strong> <span class="placeholder">[Tuliskan hasil yang ingin dicapai.]</span></p>
+					<p><strong>Pengguna:</strong> <span class="placeholder">[Sebutkan pengguna yang dituju dan kebutuhannya.]</span></p>
+				</article>
+				<article class="card">
+					<span class="card-label">Ruang lingkup</span>
+					<h3>Ketentuan dan batasan</h3>
+					<ul>
+						<li><span class="placeholder">[Ketentuan yang harus dipenuhi program.]</span></li>
+						<li><span class="placeholder">[Batasan fitur, data, atau kondisi penggunaan.]</span></li>
+					</ul>
+				</article>
+				<article class="card">
+					<span class="card-label">IPO</span>
+					<h3>Input – Process – Output</h3>
+					<p><strong>Input:</strong> <span class="placeholder">[Data yang dimasukkan pengguna.]</span></p>
+					<p><strong>Process:</strong> <span class="placeholder">[Langkah pengolahan data.]</span></p>
+					<p><strong>Output:</strong> <span class="placeholder">[Informasi atau hasil yang dihasilkan.]</span></p>
+				</article>
+			</div>
+			<div class="callout"><strong>Variabel dan tipe data:</strong> lengkapi tabel berikut dengan nama variabel, tipe data, nilai awal bila ada, dan kegunaannya.</div>
+			<div class="table-wrap" style="margin-top: 14px">
+				<table>
+					<thead><tr><th>Nama variabel</th><th>Tipe data</th><th>Nilai / rentang</th><th>Kegunaan</th></tr></thead>
+					<tbody>
+						<tr><td>[nama_variabel]</td><td>[integer / string / ...]</td><td>[nilai atau rentang]</td><td>[keterangan]</td></tr>
+						<tr><td>[nama_variabel]</td><td>[integer / string / ...]</td><td>[nilai atau rentang]</td><td>[keterangan]</td></tr>
+						<tr><td>[nama_variabel]</td><td>[integer / string / ...]</td><td>[nilai atau rentang]</td><td>[keterangan]</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="section" id="modul-a" aria-labelledby="judul-modul-a">
+			<div class="section-heading">
+				<p class="eyebrow">03 · Modul A</p>
+				<h2 id="judul-modul-a">Modul A — [Nama fungsi atau modul]</h2>
+				<p>Dokumentasikan rancangan, implementasi, dan pengujian modul pertama secara mandiri.</p>
+			</div>
+			<div class="grid grid-two">
+				<article class="card">
+					<span class="card-label">Perencanaan</span>
+					<h3>Penanggung jawab</h3>
+					<p class="placeholder">[Nama dan NIM anggota yang bertanggung jawab atas Modul A.]</p>
+					<h3>Algoritma deskriptif</h3>
+					<ol>
+						<li><span class="placeholder">[Langkah pertama.]</span></li>
+						<li><span class="placeholder">[Langkah berikutnya.]</span></li>
+						<li><span class="placeholder">[Hasil atau kondisi akhir.]</span></li>
+					</ol>
+				</article>
+				<article class="card">
+					<span class="card-label">Rancangan visual</span>
+					<h3>Flowchart Modul A</h3>
+					<div class="flow-placeholder"><div><strong>[Tempat flowchart Modul A]</strong>Sisipkan gambar, SVG, atau diagram flowchart di sini.</div></div>
+				</article>
+				<article class="card">
+					<span class="card-label">Logika program</span>
+					<h3>Pseudocode</h3>
+					<pre class="code-placeholder">MULAI
+  [tulis langkah pseudocode Modul A]
+SELESAI</pre>
+				</article>
+				<article class="card">
+					<span class="card-label">Implementasi</span>
+					<h3>Source code dan penjelasan</h3>
+					<pre class="code-placeholder">[Tempel potongan source code Modul A]</pre>
+					<p class="small-note">Jelaskan fungsi bagian penting, variabel, percabangan, atau perulangan yang digunakan.</p>
+				</article>
+			</div>
+			<div class="callout"><strong>Hasil eksekusi dan pengujian Modul A:</strong> lampirkan tangkapan layar hasil program dan catat input, hasil yang diharapkan, hasil aktual, serta status pengujian.</div>
+		</section>
+
+		<section class="section" id="modul-b" aria-labelledby="judul-modul-b">
+			<div class="section-heading">
+				<p class="eyebrow">04 · Modul B</p>
+				<h2 id="judul-modul-b">Modul B — [Nama fungsi atau modul]</h2>
+				<p>Gunakan susunan yang sama agar rancangan dan hasil kedua modul mudah dibandingkan.</p>
+			</div>
+			<div class="grid grid-two">
+				<article class="card">
+					<span class="card-label">Perencanaan</span>
+					<h3>Penanggung jawab</h3>
+					<p class="placeholder">[Nama dan NIM anggota yang bertanggung jawab atas Modul B.]</p>
+					<h3>Algoritma deskriptif</h3>
+					<ol>
+						<li><span class="placeholder">[Langkah pertama.]</span></li>
+						<li><span class="placeholder">[Langkah berikutnya.]</span></li>
+						<li><span class="placeholder">[Hasil atau kondisi akhir.]</span></li>
+					</ol>
+				</article>
+				<article class="card">
+					<span class="card-label">Rancangan visual</span>
+					<h3>Flowchart Modul B</h3>
+					<div class="flow-placeholder"><div><strong>[Tempat flowchart Modul B]</strong>Sisipkan gambar, SVG, atau diagram flowchart di sini.</div></div>
+				</article>
+				<article class="card">
+					<span class="card-label">Logika program</span>
+					<h3>Pseudocode</h3>
+					<pre class="code-placeholder">MULAI
+  [tulis langkah pseudocode Modul B]
+SELESAI</pre>
+				</article>
+				<article class="card">
+					<span class="card-label">Implementasi</span>
+					<h3>Source code dan penjelasan</h3>
+					<pre class="code-placeholder">[Tempel potongan source code Modul B]</pre>
+					<p class="small-note">Jelaskan fungsi bagian penting, variabel, percabangan, atau perulangan yang digunakan.</p>
+				</article>
+			</div>
+			<div class="callout"><strong>Hasil eksekusi dan pengujian Modul B:</strong> lampirkan tangkapan layar hasil program dan catat input, hasil yang diharapkan, hasil aktual, serta status pengujian.</div>
+		</section>
+
+		<section class="section" id="integrasi" aria-labelledby="judul-integrasi">
+			<div class="section-heading">
+				<p class="eyebrow">05 · Program Terintegrasi</p>
+				<h2 id="judul-integrasi">Dari modul menjadi satu program</h2>
+				<p>Jelaskan cara Modul A dan Modul B dihubungkan, lalu tunjukkan hasil akhir dan bukti pengujiannya.</p>
+			</div>
+			<div class="stack">
+				<article class="card">
+					<span class="card-label">Penggabungan</span>
+					<h3>Proses integrasi</h3>
+					<p class="placeholder">[Jelaskan urutan penggabungan modul, alur pemanggilan, pembagian tanggung jawab fungsi, dan penyesuaian antarmuka atau data.]</p>
+				</article>
+				<div class="grid grid-two">
+					<article class="card">
+						<span class="card-label">Rancangan final</span>
+						<h3>Pseudocode program terintegrasi</h3>
+						<pre class="code-placeholder">MULAI
+  [pseudocode alur program final]
+SELESAI</pre>
+					</article>
+					<article class="card">
+						<span class="card-label">Alur final</span>
+						<h3>Flowchart program terintegrasi</h3>
+						<div class="flow-placeholder"><div><strong>[Tempat flowchart final]</strong>Sisipkan gambar, SVG, atau diagram flowchart program terintegrasi.</div></div>
+					</article>
+				</div>
+				<article class="card">
+					<span class="card-label">Program final</span>
+					<h3>Source code terintegrasi</h3>
+					<pre class="code-placeholder">[Tempel source code lengkap program final atau tautkan berkas di repository]</pre>
+					<p class="small-note">Tambahkan penjelasan struktur program dan hubungan antara Modul A dengan Modul B.</p>
+				</article>
+				<article class="card">
+					<span class="card-label">Verifikasi</span>
+					<h3>Hasil eksekusi dan tabel pengujian</h3>
+					<p class="placeholder">[Sisipkan tangkapan layar atau uraian hasil eksekusi program final.]</p>
+					<div class="table-wrap">
+						<table>
+							<thead><tr><th>No.</th><th>Kasus / input</th><th>Hasil yang diharapkan</th><th>Hasil aktual</th><th>Status</th></tr></thead>
+							<tbody>
+								<tr><td>1</td><td>[input valid]</td><td>[hasil yang diharapkan]</td><td>[hasil aktual]</td><td>[Lulus / Gagal]</td></tr>
+								<tr><td>2</td><td>[input batas]</td><td>[hasil yang diharapkan]</td><td>[hasil aktual]</td><td>[Lulus / Gagal]</td></tr>
+								<tr><td>3</td><td>[input tidak valid]</td><td>[hasil yang diharapkan]</td><td>[hasil aktual]</td><td>[Lulus / Gagal]</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+				<article class="card">
+					<span class="card-label">Pelacakan algoritma</span>
+					<h3>Trace table</h3>
+					<div class="table-wrap">
+						<table>
+							<thead><tr><th>Langkah</th><th>Input / kondisi</th><th>Variabel 1</th><th>Variabel 2</th><th>Output</th></tr></thead>
+							<tbody>
+								<tr><td>[1]</td><td>[nilai / kondisi]</td><td>[nilai]</td><td>[nilai]</td><td>[hasil sementara]</td></tr>
+								<tr><td>[2]</td><td>[nilai / kondisi]</td><td>[nilai]</td><td>[nilai]</td><td>[hasil akhir]</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+				<article class="card">
+					<span class="card-label">Perbaikan</span>
+					<h3>Daftar kesalahan dan perbaikan</h3>
+					<div class="table-wrap">
+						<table>
+							<thead><tr><th>No.</th><th>Kesalahan / gejala</th><th>Penyebab</th><th>Perbaikan</th><th>Status</th></tr></thead>
+							<tbody>
+								<tr><td>1</td><td>[kesalahan yang ditemukan]</td><td>[penyebab]</td><td>[perbaikan yang dilakukan]</td><td>[Selesai / Proses]</td></tr>
+								<tr><td>2</td><td>[kesalahan yang ditemukan]</td><td>[penyebab]</td><td>[perbaikan yang dilakukan]</td><td>[Selesai / Proses]</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<section class="section" id="refleksi" aria-labelledby="judul-refleksi">
+			<div class="section-heading">
+				<p class="eyebrow">06 · Refleksi</p>
+				<h2 id="judul-refleksi">Apa yang dipelajari dari proyek ini?</h2>
+				<p>Catat pengalaman tim secara jujur, termasuk proses kerja, tantangan, dan langkah pengembangan berikutnya.</p>
+			</div>
+			<div class="grid grid-three">
+				<article class="card"><span class="card-label">Kolaborasi</span><h3>Pembagian pekerjaan</h3><p class="placeholder">[Jelaskan pembagian tugas, alur koordinasi, dan cara tim bekerja.]</p></article>
+				<article class="card"><span class="card-label">Peran tim</span><h3>Kontribusi anggota</h3><p class="placeholder">[Uraikan kontribusi nyata setiap anggota.]</p></article>
+				<article class="card"><span class="card-label">Tantangan</span><h3>Bagian tersulit</h3><p class="placeholder">[Jelaskan bagian paling menantang dan alasannya.]</p></article>
+				<article class="card"><span class="card-label">Evaluasi</span><h3>Kesalahan dan perbaikan</h3><p class="placeholder">[Ceritakan kesalahan penting, proses menemukan penyebab, dan perbaikannya.]</p></article>
+				<article class="card"><span class="card-label">Pembelajaran</span><h3>Pengetahuan yang diperoleh</h3><p class="placeholder">[Tuliskan konsep atau keterampilan baru yang dipelajari.]</p></article>
+				<article class="card"><span class="card-label">Berikutnya</span><h3>Rencana pengembangan UAS</h3><p class="placeholder">[Tuliskan fitur, peningkatan, atau rencana kerja untuk UAS.]</p></article>
+			</div>
+		</section>
+
+		<section class="section" id="penggunaan-ai" aria-labelledby="judul-ai">
+			<div class="section-heading">
+				<p class="eyebrow">07 · Pernyataan Penggunaan AI</p>
+				<h2 id="judul-ai">Transparansi penggunaan alat bantu</h2>
+				<p>Isi sesuai penggunaan yang benar-benar dilakukan. Jika tidak menggunakan AI, nyatakan demikian dan sesuaikan tabel.</p>
+			</div>
+			<div class="table-wrap">
+				<table>
+					<thead><tr><th>Aspek</th><th>Keterangan</th></tr></thead>
+					<tbody>
+						<tr><td>Nama alat</td><td>[Nama alat AI yang digunakan / Tidak menggunakan AI]</td></tr>
+						<tr><td>Tujuan</td><td>[Untuk keperluan apa alat digunakan?]</td></tr>
+						<tr><td>Prompt utama</td><td>[Tuliskan prompt yang relevan, atau nyatakan tidak ada.]</td></tr>
+						<tr><td>Bagian hasil yang digunakan</td><td>[Jelaskan bagian yang dipakai atau nyatakan tidak ada.]</td></tr>
+						<tr><td>Pemeriksaan dan perubahan mahasiswa</td><td>[Jelaskan cara memeriksa, menguji, dan mengubah hasil sebelum digunakan.]</td></tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout"><strong>Catatan:</strong> pastikan seluruh kode, penjelasan, hasil uji, dan pernyataan penggunaan alat telah diperiksa serta dipahami oleh anggota kelompok.</div>
+		</section>
 	</main>
 
 	<footer>
-		<span>Made with care and a little HTML.</span>
-		<span>© <span id="year">2026</span></span>
+		<div class="footer-inner">
+			<span>Proyek UTS · SSI1144 — Algoritma dan Pengantar Pemrograman</span>
+			<a href="#beranda">Kembali ke atas ↑</a>
+		</div>
 	</footer>
 </body>
 </html>
