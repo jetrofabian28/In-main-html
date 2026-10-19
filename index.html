@@ -362,7 +362,7 @@
 					<h3>Tim proyek</h3>
 					<div class="member-list">
 						<div class="member"><span>Fabian Jethro Falah Kalangi</span><span>NIM: 322610015</span></div>
-						<div class="member"><span>[Nama anggota 2]</span><span>NIM: [NIM]</span></div>
+						<div class="member"><span>Aning Dwi Setyowati</span><span>NIM: [NIM]</span></div>
 					</div>
 				</article>
 			</div>
@@ -372,35 +372,43 @@
 			<div class="section-heading">
 				<p class="eyebrow">02 · Analisis Masalah</p>
 				<h2 id="judul-analisis">Memahami masalah sebelum membangun solusi</h2>
-				<p>Uraikan kebutuhan yang melatarbelakangi program, siapa yang menggunakannya, dan bagaimana data diolah.</p>
 			</div>
 			<div class="grid grid-two">
 				<article class="card">
 					<span class="card-label">Konteks</span>
 					<h3>Latar belakang dan rumusan masalah</h3>
-					<p><strong>Latar belakang:</strong> <span class="placeholder">[Jelaskan situasi atau kebutuhan yang menjadi alasan program dibuat.]</span></p>
-					<p><strong>Rumusan masalah:</strong> <span class="placeholder">[Tuliskan masalah utama yang ingin diselesaikan.]</span></p>
+					<p><strong>Latar belakang:</strong> <span class="placeholder">Situasi dan kebutuhan yang mendasari pembuatan program ini adalah kondisi operasional di perusahaan jasa ekspedisi atau pengiriman barang yang sering kali menghadapi kompleksitas dalam menentukan tarif secara cepat, dan konsisten.</span></p>
+					<p><strong>Rumusan masalah:</strong> <span class="placeholder">Masalah utama yang ingin diselesaikan adalah ketiadaan sistem otomatis untuk menghitung biaya pengiriman paket secara akurat (berdasarkan berat, dimensi, zona, layanan, dan asuransi) sekaligus mengelola rekapitulasi data operasional pengiriman secara menyeluruh.</span></p>
 				</article>
 				<article class="card">
 					<span class="card-label">Sasaran</span>
 					<h3>Tujuan dan pengguna program</h3>
-					<p><strong>Tujuan:</strong> <span class="placeholder">[Tuliskan hasil yang ingin dicapai.]</span></p>
-					<p><strong>Pengguna:</strong> <span class="placeholder">[Sebutkan pengguna yang dituju dan kebutuhannya.]</span></p>
+					<p><strong>Tujuan:</strong> <span class="placeholder">Mengotomatisasi proses perhitungan biaya pengiriman paket secara akurat berdasarkan berat, dimensi, zona, layanan, dan asuransi, serta menghasilkan rekapitulasi data operasional pengiriman secara menyeluruh.</span></p>
+					<p><strong>Pengguna:</strong> <span class="placeholder">Petugas/operator ekspedisi atau perusahaan jasa pengiriman barang yang membutuhkan alat bantu hitung tarif cepat dan manajemen laporan rekapitulasi pengiriman harian.</span></p>
 				</article>
 				<article class="card">
 					<span class="card-label">Ruang lingkup</span>
 					<h3>Ketentuan dan batasan</h3>
 					<ul>
-						<li><span class="placeholder">[Ketentuan yang harus dipenuhi program.]</span></li>
-						<li><span class="placeholder">[Batasan fitur, data, atau kondisi penggunaan.]</span></li>
+						<li><span class="placeholder">Program memproses beberapa paket secara berurutan dan menampilkan rincian biaya per paket serta laporan rekapitulasi akhir (jumlah paket per zona, jenis layanan, total berat, penggunaan berat volumetrik, total asuransi, total pendapatan, dan paket dengan biaya tertinggi).</span></li>
 					</ul>
 				</article>
 				<article class="card">
 					<span class="card-label">IPO</span>
 					<h3>Input – Process – Output</h3>
-					<p><strong>Input:</strong> <span class="placeholder">[Data yang dimasukkan pengguna.]</span></p>
-					<p><strong>Process:</strong> <span class="placeholder">[Langkah pengolahan data.]</span></p>
-					<p><strong>Output:</strong> <span class="placeholder">[Informasi atau hasil yang dihasilkan.]</span></p>
+					<p><strong>Input:</strong> <span class="placeholder">Nomor paket, berat aktual, panjang, lebar, tinggi, zona tujuan, jenis pelayanan, nilai barang, dan pilihan asuransi.</span></p>
+					<p><strong>Process:</strong> <span class="placeholder">Menghitung berat volumetrik = (panjang x lebar x tinggi) / 6.000.
+
+Menentukan berat tagihan (nilai maksimum antara berat aktual dan berat volumetrik, dibulatkan ke atas).
+
+Menghitung biaya dasar (berat tagihan x tarif zona).
+
+Menghitung biaya tambahan layanan (jika prioritas, ditambah 40%).
+
+Menghitung biaya asuransi (1% dari nilai barang, min. Rp5.000 jika asuransi dipilih).
+
+Menghitung total biaya per paket dan mengakumulasi data untuk rekapitulasi (jumlah paket per zona, jenis layanan, total berat, jumlah paket dengan berat volumetrik, total asuransi, total pendapatan, dan identifikasi biaya tertinggi).</span></p>
+					<p><strong>Output:</strong> <span class="placeholder">Rincian biaya per paket serta laporan rekapitulasi pengiriman keseluruhan.</span></p>
 				</article>
 			</div>
 			<div class="callout"><strong>Variabel dan tipe data:</strong> lengkapi tabel berikut dengan nama variabel, tipe data, nilai awal bila ada, dan kegunaannya.</div>
