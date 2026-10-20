@@ -450,31 +450,188 @@ Menghitung total biaya per paket dan mengakumulasi data untuk rekapitulasi (juml
 					<p class="placeholder">Fabian Jethro Falah Kalangi</p>
 					<h3>Algoritma deskriptif</h3>
 					<ol>
-						<li><span class="placeholder">[Langkah pertama.]</span></li>
-						<li><span class="placeholder">[Langkah berikutnya.]</span></li>
-						<li><span class="placeholder">[Hasil atau kondisi akhir.]</span></li>
+						<li><span class="placeholder">Menerima masukan dari pengguna secara berurutan:
+
+Nilai barang (nilai_barang)
+
+Nomor paket (nomor_paket)
+
+Berat aktual (Berat_aktual)
+
+Panjang (panjang), lebar (lebar), dan tinggi (tinggi) paket
+
+Zona tujuan (zona_tujuan: A, B, atau C)
+
+Jenis pelayanan (jenis_pelayanan: 1 untuk Reguler, 2 untuk Prioritas)
+
+Pilihan asuransi (Pilihan_asuransi: Y atau N)</span></li>
+						<li><span class="placeholder">Menghitung berat Volumetrik dengan rumus: (panjang × lebar × tinggi) / 6000</span></li>
+                        <li><span class="placeholder">Menentukan berat tagihan:
+
+Membandingkan berat aktual dengan berat volumetrik, lalu ambil nilai yang paling besar (berat_maksimal).
+
+Membulatkan berat_maksimal ke atas menjadi bilangan bulat (berat_tagihan).</span></li>
+                        <li><span class="placeholder">Menentukan tarif per kilogram berdasarkan zona tujuan (huruf diubah menjadi kapital terlebih dahulu):
+
+Jika zona tujuan adalah 'A', maka tarif per kg = 8.000.
+
+Jika zona tujuan adalah 'B', maka tarif per kg = 12.000.
+
+Jika zona tujuan adalah 'C', maka tarif per kg = 18.000.
+
+Jika zona selain A, B, atau C, tampilkan pesan "Zona tujuan tidak valid!" lalu hentikan program.</span></li>
+                        <li><span class="placeholder">Menghitung biaya dasar: berat_tagihan x tarif_per_kg</span></li>
+						<li><span class="placeholder">Menghitung biaya tambahan berdasarkan jenis pelayanan:Jika jenis pelayanan adalah 2 (Prioritas), maka biaya tambahan = 40% dari biaya dasar.Jika jenis pelayanan adalah 1 (Reguler), maka biaya tambahan = 0.Jika jenis pelayanan di luar angka tersebut, tampilkan pesan "Jenis pelayanan tidak valid!" lalu hentikan program.</span></li>
+						<li><span class="placeholder">Menghitung biaya asuransi:Jika pilihan asuransi adalah 'Y' (ya), maka hitung biaya asuransi sebesar 1% dari nilai barang.Jika hasil perhitungan biaya asuransi kurang dari 5.000, maka tetapkan biaya asuransi menjadi minimal 5.000.Jika selain 'Y', biaya asuransi = 0.</span></li>
+						<li><span class="placeholder">Menghitung total biaya pengiriman dengan menjumlahkan biaya dasar, biaya tambahan, dan biaya asuransi.</span></li>
+						<li><span class="placeholder">Menampilkan hasil keluaran ke layar yang mencakup nomor paket, rincian biaya (dasar, tambahan, dan asuransi), serta total biaya akhir.</span></li>
+						<li><span class="placeholder">Menahan layar dengan perintah tunggu hingga pengguna menekan tombol Enter sebelum program selesai.</span></li>
+
 					</ol>
 				</article>
 				<article class="card">
 					<span class="card-label">Rancangan visual</span>
 					<h3>Flowchart Modul A</h3>
-					<div class="flow-placeholder"><div><strong>Flowchart_Modul_A_Perhitungan_Biaya_Pengiriman.drawio.html</strong>Sisipkan gambar, SVG, atau diagram flowchart di sini.</div></div>
+					<div class="flow-placeholder"><div><strong><img src="Image/Modul A Flowchart.png" alt="A descriptive summary of the image"></strong>Sisipkan gambar, SVG, atau diagram flowchart di sini.</div></div>
 				</article>
 				<article class="card">
 					<span class="card-label">Logika program</span>
 					<h3>Pseudocode</h3>
 					<pre class="code-placeholder">MULAI
-  [tulis langkah pseudocode Modul A]
+  DEKLARASI
+    // Variabel Input
+    nomor_paket : STRING
+    Berat_aktual, panjang, lebar, tinggi, nilai_barang : REAL
+    zona_tujuan, Pilihan_asuransi : CHARACTER
+    jenis_pelayanan : INTEGER
+
+    // Variabel Proses dan Output
+    berat_volumetrik, berat_maksimal, berat_tagihan : REAL
+    tarifperKg, biaya_dasar, biaya_tambahan, biaya_asuransi, total_biaya : REAL
+
+ALGORITMA
+    // Input Data Pengguna
+    Tampilkan "Masukkan nilai Barang (Rp): "
+    Baca(nilai_barang)
+    
+    Tampilkan "Masukkan Nomor Paket: "
+    Baca(nomor_paket)
+    
+    Tampilkan "Masukkan Berat Aktual (kg): "
+    Baca(Berat_aktual)
+    
+    Tampilkan "Masukkan Panjang (cm): "
+    Baca(panjang)
+
+    Tampilkan "Masukkan Lebar (cm): "
+    Baca(lebar)
+
+    Tampilkan "Masukkan Tinggi (cm): "
+    Baca(tinggi)
+
+    Tampilkan "Masukkan Zona_Tujuan (A/B/C): "
+    Baca(zona_tujuan)
+    
+    Tampilkan "Jenis Pelayanan (1. Reguler, 2. Prioritas): "
+    Baca(jenis_pelayanan)
+    
+    Tampilkan "Apakah ingin menggunakan asuransi? (Y/N): "
+    Baca(Pilihan_asuransi)
+
+    // Perhitungan Berat Volumetrik dan Berat Tagihan
+    berat_volumetrik <- (panjang * lebar * tinggi) / 6000
+    berat_maksimal <- MAX(Berat_aktual, berat_volumetrik)
+    berat_tagihan <- CEIL(berat_maksimal)
+
+    // Menentukan Tarif per Kg Berdasarkan Zona Tujuan
+    tarifperKg <- 0
+    zona_tujuan <- TOUPPER(zona_tujuan)
+    
+    JIKA zona_tujuan == 'A' MAKA
+        tarifperKg <- 8000
+    SEBALIKNYA JIKA zona_tujuan == 'B' MAKA
+        tarifperKg <- 12000
+    SEBALIKNYA JIKA zona_tujuan == 'C' MAKA
+        tarifperKg <- 18000
+    SEBALIKNYA
+        Tampilkan "Zona tujuan tidak valid!"
+        KELUAR PROGRAM
+    AKHIR JIKA
+
+    biaya_dasar <- berat_tagihan * tarifperKg
+
+    // Menghitung biaya tambahan berdasarkan jenis pelayanan
+    biaya_tambahan <- 0
+    JIKA jenis_pelayanan == 2 MAKA
+        biaya_tambahan <- 0.40 * biaya_dasar
+    SEBALIKNYA JIKA jenis_pelayanan == 1 MAKA
+        biaya_tambahan <- 0
+    SEBALIKNYA
+        Tampilkan "Jenis pelayanan tidak valid!"
+        KELUAR PROGRAM
+    AKHIR JIKA
+
+    // Menghitung biaya asuransi jika dipilih
+    biaya_asuransi <- 0
+    JIKA TOUPPER(Pilihan_asuransi) == 'Y' MAKA
+        biaya_asuransi <- 0.01 * nilai_barang
+        JIKA biaya_asuransi < 5000 MAKA
+            biaya_asuransi <- 5000
+        AKHIR JIKA
+    AKHIR JIKA
+
+    // Menghitung dan Menampilkan Total Biaya
+    Tampilkan "No. paket: ", nomor_paket
+    total_biaya <- biaya_dasar + biaya_tambahan + biaya_asuransi
+    Tampilkan "Biaya dasar ", biaya_dasar, " + Biaya tambahan ", biaya_tambahan, " + Biaya asuransi ", biaya_asuransi
+    Tampilkan "Total Biaya: Rp ", total_biaya
+    
+    Tampilkan "Tekan Enter untuk keluar...."
 SELESAI</pre>
 				</article>
 				<article class="card">
 					<span class="card-label">Implementasi</span>
 					<h3>Source code dan penjelasan</h3>
-					<pre class="code-placeholder">[Tempel potongan source code Modul A]</pre>
-					<p class="small-note">Jelaskan fungsi bagian penting, variabel, percabangan, atau perulangan yang digunakan.</p>
+					<pre class="code-placeholder">Menggunakan bahasa pemrograman C++</pre>
+					<p class="small-note">1. Library (#include).</p>
+					<p class="small-note">#include iostream: Digunakan untuk menangani proses input (cin) dan output (cout).</p>
+					<p class="small-note">#include string: Digunakan untuk mengolah tipe data teks (string), seperti nomor_paket.</p>
+					<p class="small-note">#include iomanip: Digunakan untuk mengatur format tampilan output (meskipun dalam kode ini tidak banyak terpakai secara langsung).</p>
+					<p class="small-note">#include cmath: Digunakan untuk fungsi matematika seperti ceil() yang dipakai untuk pembulatan ke atas pada berat tagihan.</p>
+					<p class="small-note">#include algorithm: Digunakan untuk fungsi max() guna membandingkan nilai berat aktual dan berat volumetrik.</p>
+					<p class="small-note">#include cctype: Digunakan untuk fungsi manipulasi karakter seperti toupper() untuk mengubah huruf kecil menjadi kapital.</p>
+                    <p class="small-note">Input Data
+Menerima berbagai parameter dari pengguna seperti nilai barang, nomor resi/paket, berat asli, dimensi ukuran (panjang, lebar, tinggi), zona tujuan (A, B, atau C), jenis layanan (1 atau 2), dan persetujuan asuransi (Y atau N).</p>
+                    <p class="small-note">Perhitungan Berat Volumetrik: Panjang x Lebar x Tinggi / 6000</p>
+                    <p class="small-note">Penentuan Berat Tagihan (berat_tagihan)
+
+Program membandingkan antara berat aktual timbangan dengan berat volumetrik menggunakan max().
+
+Hasil yang lebih besar akan dibulatkan ke atas menggunakan fungsi ceil(). Misalnya, hasil berat 2.1 kg akan dibulatkan menjadi 3 kg.</p>
+                    <p class="small-note">Penentuan Tarif Zona (tarif_per_kg)
+
+Tarif dasar per kilogram disesuaikan dengan zona tujuan:
+
+Zona A: Rp 8.000 / kg
+
+Zona B: Rp 12.000 / kg
+
+Zona C: Rp 18.000 / kg</p>
+                    <p class="small-note">Jika zona di luar huruf tersebut, program akan menampilkan pesan kesalahan dan berhenti (return 1).</p>
+                    <p class="small-note">Biaya Tambahan Pelayanan
+
+Jika memilih layanan reguler (1), tidak ada tambahan biaya (0).
+
+Jika memilih layanan prioritas (2), dikenakan biaya tambahan sebesar 40% dari total biaya dasar.</p>
+                    <p class="small-note">Biaya Asuransi
+
+Jika pengguna memilih Y, dihitung 1% dari total nilai barang.
+
+Terdapat aturan batas bawah (minimum), jika hasil 1% kurang dari Rp 5.000, maka biaya asuransi otomatis ditetapkan menjadi Rp 5.000.</p>
+
 				</article>
 			</div>
-			<div class="callout"><strong>Hasil eksekusi dan pengujian Modul A:</strong> lampirkan tangkapan layar hasil program dan catat input, hasil yang diharapkan, hasil aktual, serta status pengujian.</div>
+			<div class="callout"><strong>Hasil eksekusi dan pengujian Modul A:</strong> <img src="Image/Screenshot hasil Modul A.png" alt="Hasil akhir pemrograman"></div>
 		</section>
 
 		<section class="section" id="modul-b" aria-labelledby="judul-modul-b">
@@ -619,10 +776,10 @@ SELESAI</pre>
 				<table>
 					<thead><tr><th>Aspek</th><th>Keterangan</th></tr></thead>
 					<tbody>
-						<tr><td>Nama alat</td><td>[Nama alat AI yang digunakan / Tidak menggunakan AI]</td></tr>
-						<tr><td>Tujuan</td><td>[Untuk keperluan apa alat digunakan?]</td></tr>
+						<tr><td>Nama alat</td><td>Menggunakan ChatGPT dan Gemini</td></tr>
+						<tr><td>Tujuan</td><td>Menggunakan ChatGpt untuk memberi Kode perhitungan Yang Benar , dan Gemini Untuk memberikan Promp template untuk Github Page</td></tr>
 						<tr><td>Prompt utama</td><td>[Tuliskan prompt yang relevan, atau nyatakan tidak ada.]</td></tr>
-						<tr><td>Bagian hasil yang digunakan</td><td>[Jelaskan bagian yang dipakai atau nyatakan tidak ada.]</td></tr>
+						<tr><td>Bagian hasil yang digunakan</td><td>Buatkan saya template HTML untuk github page</td></tr>
 						<tr><td>Pemeriksaan dan perubahan mahasiswa</td><td>[Jelaskan cara memeriksa, menguji, dan mengubah hasil sebelum digunakan.]</td></tr>
 					</tbody>
 				</table>
