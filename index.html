@@ -256,6 +256,25 @@
 		}
 
 		.flow-placeholder strong { display: block; margin-bottom: 5px; color: var(--ink); }
+		.flowchart-figure {
+			display: grid;
+			justify-items: center;
+			gap: 10px;
+			margin: 0;
+			padding: 18px;
+			border: 1px solid var(--line);
+			border-radius: 10px;
+			background: #f8faf7;
+		}
+
+		.flowchart-image {
+			display: block;
+			width: 100%;
+			max-height: 75vh;
+			object-fit: contain;
+		}
+
+		.flowchart-figure figcaption { color: var(--muted); font-size: 12px; text-align: center; }
 		.code-placeholder {
 			overflow-x: auto;
 			margin: 0;
@@ -492,7 +511,10 @@ Jika zona selain A, B, atau C, tampilkan pesan "Zona tujuan tidak valid!" lalu h
 				<article class="card">
 					<span class="card-label">Rancangan visual</span>
 					<h3>Flowchart Modul A</h3>
-					<div class="flow-placeholder"><div><strong><img src="Image/Modul A Flowchart1.png" alt="A descriptive summary of the image"></strong>Flowchart A.</div></div>
+					<figure class="flowchart-figure">
+						<img class="flowchart-image" src="Image/Modul A Flowchart1.png" alt="Flowchart Modul A untuk menghitung biaya pengiriman paket">
+						<figcaption>Flowchart Modul A</figcaption>
+					</figure>
 				</article>
 				<article class="card">
 					<span class="card-label">Logika program</span>
@@ -660,7 +682,10 @@ Terdapat aturan batas bawah (minimum), jika hasil 1% kurang dari Rp 5.000, maka 
 				<article class="card">
 					<span class="card-label">Rancangan visual</span>
 					<h3>Flowchart Modul B</h3>
-					<div class="flow-placeholder"><div><strong>[Tempat flowchart Modul B]</strong>Sisipkan gambar, SVG, atau diagram flowchart di sini.</div></div>
+					<figure class="flowchart-figure">
+						<img class="flowchart-image" src="Image/Flowchart_Modul_B.png" alt="Flowchart Modul B untuk rekapitulasi data pengiriman paket">
+						<figcaption>Flowchart Modul B</figcaption>
+					</figure>
 				</article>
 				<article class="card">
 					<span class="card-label">Logika program</span>
