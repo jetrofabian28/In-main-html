@@ -461,7 +461,7 @@ Menghitung total biaya per paket dan mengakumulasi data untuk rekapitulasi (juml
 		<section class="section" id="modul-a" aria-labelledby="judul-modul-a">
 			<div class="section-heading">
 				<p class="eyebrow">03 · Modul A</p>
-				<h2 id="judul-modul-a">Modul A — [Nama fungsi atau modul]</h2>
+				<h2 id="judul-modul-a">Modul A — Proses Utama</h2>
 				<p>Dokumentasikan rancangan, implementasi, dan pengujian modul pertama secara mandiri.</p>
 			</div>
 			<div class="grid grid-two">
@@ -716,39 +716,100 @@ SELESAI</pre>
 				<article class="card">
 					<span class="card-label">Penggabungan</span>
 					<h3>Proses integrasi</h3>
-					<p class="placeholder">[Jelaskan urutan penggabungan modul, alur pemanggilan, pembagian tanggung jawab fungsi, dan penyesuaian antarmuka atau data.]</p>
-				</article>
-				<div class="grid grid-two">
-					<article class="card">
-						<span class="card-label">Rancangan final</span>
-						<h3>Pseudocode program terintegrasi</h3>
-						<pre class="code-placeholder">MULAI
-  [pseudocode alur program final]
-SELESAI</pre>
-					</article>
-					<article class="card">
-						<span class="card-label">Alur final</span>
-						<h3>Flowchart program terintegrasi</h3>
-						<div class="flow-placeholder"><div><strong>[Tempat flowchart final]</strong>Sisipkan gambar, SVG, atau diagram flowchart program terintegrasi.</div></div>
-					</article>
-				</div>
-				<article class="card">
-					<span class="card-label">Program final</span>
-					<h3>Source code terintegrasi</h3>
-					<pre class="code-placeholder">[Tempel source code lengkap program final atau tautkan berkas di repository]</pre>
-					<p class="small-note">Tambahkan penjelasan struktur program dan hubungan antara Modul A dengan Modul B.</p>
+					<p class="placeholder">[Jelaskan urutan penggabungan modul, alur pemanggilan, pembagian tanggung jawab fungsi.]</p>
 				</article>
 				<article class="card">
 					<span class="card-label">Verifikasi</span>
 					<h3>Hasil eksekusi dan tabel pengujian</h3>
-					<p class="placeholder">[Sisipkan tangkapan layar atau uraian hasil eksekusi program final.]</p>
+					<pre class="code-placeholder">Masukkan jumlah paket: 3
+
+=== Data Paket 1 ===
+Masukkan Nomor Paket: PKT001
+Masukkan nilai Barang (Rp): 500000
+Masukkan Berat Aktual (kg): 2.1
+Masukkan Panjang (cm): 30
+Masukkan Lebar (cm): 30
+Masukkan Tinggi (cm): 30
+Masukkan Zona Tujuan (A/B/C): A
+Jenis Pelayanan (1. Reguler, 2. Prioritas): 1
+Apakah ingin menggunakan asuransi? (Y/N): Y
+
+--- Rincian Biaya Paket PKT001 ---
+Zona tujuan: A
+Berat volumetrik: 4.50 kg
+Berat tagihan: 5.00 kg
+Biaya dasar: Rp 40000.00
+Biaya tambahan pelayanan: Rp 0.00
+Biaya asuransi: Rp 5000.00
+Total biaya: Rp 45000.00
+
+=== Data Paket 2 ===
+Masukkan Nomor Paket: PKT002
+Masukkan nilai Barang (Rp): 1000000
+Masukkan Berat Aktual (kg): 3
+Masukkan Panjang (cm): 20
+Masukkan Lebar (cm): 20
+Masukkan Tinggi (cm): 20
+Masukkan Zona Tujuan (A/B/C): b
+Jenis Pelayanan (1. Reguler, 2. Prioritas): 2
+Apakah ingin menggunakan asuransi? (Y/N): N
+
+--- Rincian Biaya Paket PKT002 ---
+Zona tujuan: B
+Berat volumetrik: 1.33 kg
+Berat tagihan: 3.00 kg
+Biaya dasar: Rp 36000.00
+Biaya tambahan pelayanan: Rp 14400.00
+Biaya asuransi: Rp 0.00
+Total biaya: Rp 50400.00
+
+=== Data Paket 3 ===
+Masukkan Nomor Paket: PKT003
+Masukkan nilai Barang (Rp): 2000000
+Masukkan Berat Aktual (kg): 1.5
+Masukkan Panjang (cm): 10
+Masukkan Lebar (cm): 10
+Masukkan Tinggi (cm): 10
+Masukkan Zona Tujuan (A/B/C): C
+Jenis Pelayanan (1. Reguler, 2. Prioritas): 2
+Apakah ingin menggunakan asuransi? (Y/N): Y
+
+--- Rincian Biaya Paket PKT003 ---
+Zona tujuan: C
+Berat volumetrik: 0.17 kg
+Berat tagihan: 2.00 kg
+Biaya dasar: Rp 36000.00
+Biaya tambahan pelayanan: Rp 14400.00
+Biaya asuransi: Rp 20000.00
+Total biaya: Rp 70400.00
+
+========== REKAPITULASI PENGIRIMAN ==========
+Jumlah paket zona A: 1
+Jumlah paket zona B: 1
+Jumlah paket zona C: 1
+Jumlah paket reguler: 1
+Jumlah paket prioritas: 2
+Total berat aktual: 6.60 kg
+Total berat tagihan: 10.00 kg
+Paket menggunakan berat volumetrik: 1
+Total asuransi: Rp 25000.00
+Total pendapatan: Rp 165800.00
+Paket dengan biaya tertinggi: PKT003 (Rp 70400.00)</pre>
+					<p class="small-note">Hasil di atas diperoleh dari menjalankan program final dengan 3 paket (kasus uji nomor 1). Program dikompilasi dengan g++ tanpa error maupun warning.</p>
 					<div class="table-wrap">
 						<table>
 							<thead><tr><th>No.</th><th>Kasus / input</th><th>Hasil yang diharapkan</th><th>Hasil aktual</th><th>Status</th></tr></thead>
 							<tbody>
-								<tr><td>1</td><td>[input valid]</td><td>[hasil yang diharapkan]</td><td>[hasil aktual]</td><td>[Lulus / Gagal]</td></tr>
-								<tr><td>2</td><td>[input batas]</td><td>[hasil yang diharapkan]</td><td>[hasil aktual]</td><td>[Lulus / Gagal]</td></tr>
-								<tr><td>3</td><td>[input tidak valid]</td><td>[hasil yang diharapkan]</td><td>[hasil aktual]</td><td>[Lulus / Gagal]</td></tr>
+								<tr><td>1</td><td>Input valid: 3 paket (PKT001 zona A reguler asuransi Y; PKT002 zona B prioritas tanpa asuransi; PKT003 zona C prioritas asuransi Y)</td><td>Total biaya 45.000 + 50.400 + 70.400; total pendapatan Rp 165.800; biaya tertinggi PKT003</td><td>Total pendapatan Rp 165800.00; biaya tertinggi PKT003 (Rp 70400.00)</td><td>Lulus</td></tr>
+								<tr><td>2</td><td>Berat volumetrik lebih besar dari aktual: 2,1 kg, dimensi 30×30×30 cm</td><td>Volumetrik 4,5 kg dibulatkan menjadi 5 kg; biaya dasar Rp 40.000; dihitung sebagai paket volumetrik</td><td>Berat tagihan 5.00 kg; biaya dasar Rp 40000.00; paket volumetrik = 1</td><td>Lulus</td></tr>
+								<tr><td>3</td><td>Berat aktual lebih besar dari volumetrik: 3 kg, dimensi 20×20×20 cm</td><td>Volumetrik 1,33 kg; tagihan memakai berat aktual = 3 kg</td><td>Berat tagihan 3.00 kg</td><td>Lulus</td></tr>
+								<tr><td>4</td><td>Zona huruf kecil: &ldquo;b&rdquo;</td><td>Diubah menjadi &ldquo;B&rdquo;, tarif Rp 12.000/kg</td><td>Zona tujuan: B; biaya dasar Rp 36000.00</td><td>Lulus</td></tr>
+								<tr><td>5</td><td>Input batas: nilai barang Rp 100.000, asuransi Y (1% = Rp 1.000)</td><td>Biaya asuransi dinaikkan ke minimum Rp 5.000; total Rp 13.000 (berat 1 kg, zona A, reguler)</td><td>Biaya asuransi Rp 5000.00; total Rp 13000.00</td><td>Lulus</td></tr>
+								<tr><td>6</td><td>Input tidak valid: jumlah paket = 0</td><td>Pesan kesalahan, program berhenti</td><td>&ldquo;Jumlah paket harus berupa bilangan bulat lebih dari 0.&rdquo; (exit code 1)</td><td>Lulus</td></tr>
+								<tr><td>7</td><td>Input tidak valid: zona tujuan &ldquo;X&rdquo;</td><td>Pesan kesalahan, program berhenti</td><td>&ldquo;Zona tujuan harus A, B, atau C.&rdquo; (exit code 1)</td><td>Lulus</td></tr>
+								<tr><td>8</td><td>Input tidak valid: berat aktual = -2</td><td>Pesan kesalahan, program berhenti</td><td>&ldquo;Berat aktual harus berupa angka lebih dari 0.&rdquo; (exit code 1)</td><td>Lulus</td></tr>
+								<tr><td>9</td><td>Input tidak valid: jenis pelayanan = 3</td><td>Pesan kesalahan, program berhenti</td><td>&ldquo;Jenis pelayanan harus 1 (Reguler) atau 2 (Prioritas).&rdquo; (exit code 1)</td><td>Lulus</td></tr>
+								<tr><td>10</td><td>Input tidak valid: pilihan asuransi = &ldquo;Z&rdquo;</td><td>Pesan kesalahan, program berhenti</td><td>&ldquo;Pilihan asuransi harus Y atau N.&rdquo; (exit code 1)</td><td>Lulus</td></tr>
 							</tbody>
 						</table>
 					</div>
@@ -756,25 +817,16 @@ SELESAI</pre>
 				<article class="card">
 					<span class="card-label">Pelacakan algoritma</span>
 					<h3>Trace table</h3>
+					<p class="small-note">Penelusuran dengan data uji nomor 1 (3 paket). Rumus: volumetrik = P×L×T ÷ 6000; tagihan = ceil(max(aktual, volumetrik)); dasar = tagihan × tarif; tambahan = 40% × dasar bila prioritas; asuransi = max(1% × nilai, 5000) bila Y; total = dasar + tambahan + asuransi.</p>
 					<div class="table-wrap">
 						<table>
-							<thead><tr><th>Langkah</th><th>Input / kondisi</th><th>Variabel 1</th><th>Variabel 2</th><th>Output</th></tr></thead>
+							<thead><tr><th>Langkah</th><th>Input / kondisi</th><th>Perhitungan paket</th><th>Variabel rekap setelah langkah</th><th>Output</th></tr></thead>
 							<tbody>
-								<tr><td>[1]</td><td>[nilai / kondisi]</td><td>[nilai]</td><td>[nilai]</td><td>[hasil sementara]</td></tr>
-								<tr><td>[2]</td><td>[nilai / kondisi]</td><td>[nilai]</td><td>[nilai]</td><td>[hasil akhir]</td></tr>
-							</tbody>
-						</table>
-					</div>
-				</article>
-				<article class="card">
-					<span class="card-label">Perbaikan</span>
-					<h3>Daftar kesalahan dan perbaikan</h3>
-					<div class="table-wrap">
-						<table>
-							<thead><tr><th>No.</th><th>Kesalahan / gejala</th><th>Penyebab</th><th>Perbaikan</th><th>Status</th></tr></thead>
-							<tbody>
-								<tr><td>1</td><td>[kesalahan yang ditemukan]</td><td>[penyebab]</td><td>[perbaikan yang dilakukan]</td><td>[Selesai / Proses]</td></tr>
-								<tr><td>2</td><td>[kesalahan yang ditemukan]</td><td>[penyebab]</td><td>[perbaikan yang dilakukan]</td><td>[Selesai / Proses]</td></tr>
+								<tr><td>1</td><td>jumlah_paket = 3 (3 &gt; 0, valid)</td><td>&ndash;</td><td>Semua rekap = 0; biayaTertinggi = -1</td><td>Mulai perulangan i = 1</td></tr>
+								<tr><td>2</td><td>i = 1 &le; 3<br>PKT001, Rp 500.000, 2,1 kg, 30×30×30, zona A, layanan 1, asuransi Y</td><td>volumetrik = 27000/6000 = 4,5<br>4,5 &gt; 2,1 &rarr; volumetrik dipakai<br>tagihan = ceil(4,5) = 5<br>dasar = 5 × 8000 = 40.000<br>tambahan = 0 (reguler)<br>asuransi = max(5.000; 5.000) = 5.000<br>total = 45.000</td><td>zonaA = 1; reguler = 1; menggunakanBeratVolumetrik = 1<br>totalBeratAktual = 2,1; totalBeratTagihan = 5<br>totalAsuransi = 5.000; totalPendapatan = 45.000<br>45.000 &gt; -1 &rarr; biayaTertinggi = 45.000 (PKT001)</td><td>Rincian PKT001: total Rp 45000.00</td></tr>
+								<tr><td>3</td><td>i = 2 &le; 3<br>PKT002, Rp 1.000.000, 3 kg, 20×20×20, zona b &rarr; B, layanan 2, asuransi N</td><td>volumetrik = 8000/6000 = 1,33<br>1,33 &gt; 3 salah &rarr; berat aktual dipakai<br>tagihan = ceil(3) = 3<br>dasar = 3 × 12000 = 36.000<br>tambahan = 40% × 36.000 = 14.400<br>asuransi = 0<br>total = 50.400</td><td>zonaB = 1; prioritas = 1; menggunakanBeratVolumetrik tetap 1<br>totalBeratAktual = 5,1; totalBeratTagihan = 8<br>totalAsuransi = 5.000; totalPendapatan = 95.400<br>50.400 &gt; 45.000 &rarr; biayaTertinggi = 50.400 (PKT002)</td><td>Rincian PKT002: total Rp 50400.00</td></tr>
+								<tr><td>4</td><td>i = 3 &le; 3<br>PKT003, Rp 2.000.000, 1,5 kg, 10×10×10, zona C, layanan 2, asuransi Y</td><td>volumetrik = 1000/6000 = 0,17<br>0,17 &gt; 1,5 salah &rarr; berat aktual dipakai<br>tagihan = ceil(1,5) = 2<br>dasar = 2 × 18000 = 36.000<br>tambahan = 14.400<br>asuransi = max(20.000; 5.000) = 20.000<br>total = 70.400</td><td>zonaC = 1; prioritas = 2; menggunakanBeratVolumetrik tetap 1<br>totalBeratAktual = 6,6; totalBeratTagihan = 10<br>totalAsuransi = 25.000; totalPendapatan = 165.800<br>70.400 &gt; 50.400 &rarr; biayaTertinggi = 70.400 (PKT003)</td><td>Rincian PKT003: total Rp 70400.00</td></tr>
+								<tr><td>5</td><td>i = 4 &le; 3 salah &rarr; perulangan berhenti</td><td>&ndash;</td><td>Nilai rekap tidak berubah</td><td>Rekapitulasi: A=1, B=1, C=1; reguler 1, prioritas 2; aktual 6,60 kg; tagihan 10,00 kg; volumetrik 1 paket; asuransi Rp 25000,00; pendapatan Rp 165800,00; tertinggi PKT003 (Rp 70400,00)</td></tr>
 							</tbody>
 						</table>
 					</div>
