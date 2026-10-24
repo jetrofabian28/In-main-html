@@ -716,7 +716,17 @@ SELESAI</pre>
 				<article class="card">
 					<span class="card-label">Penggabungan</span>
 					<h3>Proses integrasi</h3>
-					<p class="placeholder">[Jelaskan urutan penggabungan modul, alur pemanggilan, pembagian tanggung jawab fungsi.]</p>
+					<p class="placeholder">
+Gambaran Singkat
+
+Modul A menghitung biaya satu paket, sedangkan Modul B menghitung banyak paket sekaligus dan membuat rekapitulasi. Keduanya sama-sama masih berupa satu blok main(), sehingga integrasi dilakukan dengan memecah logika menjadi fungsi lalu menyusunnya kembali dalam satu program.
+
+Urutan Penggabungan
+1. Ambil rumus perhitungan dari Modul A: berat volumetrik (p × l × t / 6000), berat tagihan (ceil(max(aktual, volumetrik))), tarif zona (A 8.000, B 12.000, C 18.000 per kg), biaya prioritas 40% dari biaya dasar, dan asuransi 1% dengan minimal Rp 5.000.
+2. Ambil kerangka dari Modul B: perulangan sebanyak jumlah paket, validasi input yang ketat, dan struct RekapPengiriman.
+3. Pisahkan kode menjadi fungsi-fungsi dengan satu tugas masing-masing.
+4. Jadikan main() sebagai koordinator yang hanya memanggil fungsi-fungsi tersebut.
+5. Uji dengan satu paket (hasil harus sama dengan Modul A), lalu dengan beberapa paket.</p>
 				</article>
 				<article class="card">
 					<span class="card-label">Verifikasi</span>
