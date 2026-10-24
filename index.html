@@ -848,15 +848,37 @@ Paket dengan biaya tertinggi: PKT003 (Rp 70400.00)</pre>
 			<div class="section-heading">
 				<p class="eyebrow">06 · Refleksi</p>
 				<h2 id="judul-refleksi">Apa yang dipelajari dari proyek ini?</h2>
-				<p>Catat pengalaman tim secara jujur, termasuk proses kerja, tantangan, dan langkah pengembangan berikutnya.</p>
 			</div>
 			<div class="grid grid-three">
-				<article class="card"><span class="card-label">Kolaborasi</span><h3>Pembagian pekerjaan</h3><p class="placeholder">[Jelaskan pembagian tugas, alur koordinasi, dan cara tim bekerja.]</p></article>
-				<article class="card"><span class="card-label">Peran tim</span><h3>Kontribusi anggota</h3><p class="placeholder">[Uraikan kontribusi nyata setiap anggota.]</p></article>
-				<article class="card"><span class="card-label">Tantangan</span><h3>Bagian tersulit</h3><p class="placeholder">[Jelaskan bagian paling menantang dan alasannya.]</p></article>
-				<article class="card"><span class="card-label">Evaluasi</span><h3>Kesalahan dan perbaikan</h3><p class="placeholder">[Ceritakan kesalahan penting, proses menemukan penyebab, dan perbaikannya.]</p></article>
-				<article class="card"><span class="card-label">Pembelajaran</span><h3>Pengetahuan yang diperoleh</h3><p class="placeholder">[Tuliskan konsep atau keterampilan baru yang dipelajari.]</p></article>
-				<article class="card"><span class="card-label">Berikutnya</span><h3>Rencana pengembangan UAS</h3><p class="placeholder">[Tuliskan fitur, peningkatan, atau rencana kerja untuk UAS.]</p></article>
+				<article class="card"><span class="card-label">Pembagian pekerjaan</span><p class="placeholder">kami bekerja dengan memberikan tugas masing-masing mengerjakan 1 modul dimana Fabian Jethro Falah Mengerjakan Modul A dan Aning Dwi Setyowati Mengerjakan Modul B</p></article>
+				<article class="card"><span class="card-label">Kontribusi anggota</span><p class="placeholder">
+Fabian Jethro Falah:
+1. Menyusun alur input satu paket. Program membaca nilai barang, nomor paket, berat aktual, panjang, lebar, tinggi, zona tujuan, jenis pelayanan, dan pilihan asuransi.
+2. Menerapkan logika berat tagihan. Berat volumetrik dihitung dengan rumus (p × l × t) / 6000, dibandingkan dengan berat aktual memakai max(), lalu dibulatkan ke atas dengan ceil().
+3. Menentukan tarif per zona. Zona A Rp 8.000, B Rp 12.000, dan C Rp 18.000 per kg, dengan toupper() agar huruf kecil tetap diterima.
+4. Menghitung biaya tambahan pelayanan. Layanan prioritas dikenai 40% dari biaya dasar, layanan reguler tanpa tambahan.
+5. Menghitung asuransi. Besarnya 1% dari nilai barang dengan batas minimum Rp 5.000.
+6. Menampilkan hasil. Program mencetak rincian biaya dasar, biaya tambahan, biaya asuransi, dan total biaya.
+Penanganan input tidak valid dasar. Program berhenti dengan pesan jika zona atau jenis pelayanan tidak sesuai.
+Aning Dwi Setyowati:
+1. Menambahkan perulangan multi paket. Program meminta jumlah paket lebih dahulu, lalu memproses setiap paket dengan for.
+2. Membuat struct RekapPengiriman. Struktur ini menampung seluruh data rekap: jumlah per zona, jumlah per jenis layanan, total berat, total asuransi, total pendapatan, dan paket dengan biaya tertinggi.
+3. Memperkuat validasi input. Setiap masukan diperiksa, mencakup kegagalan cin, nilai tidak terbatas (isfinite), berat dan dimensi yang harus lebih dari 0, nilai barang yang tidak boleh negatif, serta pilihan asuransi yang harus Y atau N.
+4. Meningkatkan keamanan kode. Penggunaan static_cast<unsigned char> sebelum toupper(), const pada hasil perhitungan, dan cerr untuk pesan kesalahan.
+5. Menambahkan pelacakan berat volumetrik. Program menghitung berapa paket yang tagihannya ditentukan oleh berat volumetrik, bukan berat aktual.
+6. Mencari paket dengan biaya tertinggi. Program membandingkan total biaya setiap paket dan menyimpan nomor paketnya.
+7. Membuat laporan rekapitulasi akhir. Ringkasan seluruh pengiriman dicetak setelah semua paket diproses, dengan format dua desimal lewat fixed dan setprecision(2).
+</p></article>
+				<article class="card"><span class="card-label">Bagian tersulit</span><p class="placeholder">Menentukan tarif zona dan jenis pelayanan memakai rantai if / else if / else. sering bingung kapan program harus berhenti (return 1) dan kapan boleh lanjut. Selain itu, ada kebiasaan lupa mempertimbangkan input huruf kecil, itulah gunanya toupper().</p></article>
+				<article class="card"><span class="card-label">Kesalahan dan perbaikan</span><p class="placeholder">Kesalahan Fatal dan perbaikan yang saya buat[modul A] adalah lupa mendeklarasi sebuah variabel sebelun nelakukan perhitungan.</p></article>
+				<article class="card"><span class="card-label">Pengetahuan yang diperoleh</span><p class="placeholder">Melalui pembuatan Modul B, programmer memperoleh pemahaman tentang cara mengubah program satu paket menjadi pemrosesan banyak data dengan perulangan for, termasuk perbedaan scope antara variabel per paket di dalam perulangan dan data rekap yang bertahan di luarnya. Programmer juga belajar mengelompokkan data berhubungan dengan struct, menerapkan pola akumulasi dan pencarian nilai tertinggi, serta menulis validasi input yang defensif memakai !(cin >> x), isfinite(), dan pemeriksaan rentang nilai. Selain itu, programmer mengenal praktik kode yang lebih aman dan rapi, seperti toupper dengan static_cast<unsigned char>, const, operator ternary, konstanta tarif untuk menghindari magic number, dan format output dengan fixed serta setprecision(2). Dari kelemahan kode ini, yaitu rekap zona yang diperbarui sebelum seluruh input valid dan seluruh logika yang masih berada di dalam main(), programmer juga menyadari pentingnya urutan operasi dan pemecahan kode menjadi fungsi pada tahap integrasi.</p></article>
+				<article class="card"><span class="card-label">Rencana pengembangan UAS</span><p class="placeholder">
+1. Data tersimpan dalam array of objects. Di UTS, data paket hilang setelah dihitung. Di UAS, paket disimpan selama program berjalan, sehingga bisa ditampilkan, dicari, dan diubah.
+2. Program berbasis menu yang berulang. Pengguna tidak lagi menjalankan program sekali jalan.
+3. Validasi tidak lagi menghentikan program. Di UTS, input salah langsung return 1. Di UAS, input diulang atau ditolak dengan pesan, lalu kembali ke menu.
+4. Struktur OOP. Logika di main() dipindahkan ke class: Paket (parent), PaketReguler dan PaketPrioritas (child), serta PengirimanManager.
+5. Perbaikan bug rekap Modul B. Rekap kini dihitung dari data array, sehingga tidak ada pembaruan sebelum data valid.
+6. Fitur baru: pencarian nomor paket, status pengiriman, ubah data, dan penolakan nomor paket duplikat.</p></article>
 			</div>
 		</section>
 
@@ -871,13 +893,12 @@ Paket dengan biaya tertinggi: PKT003 (Rp 70400.00)</pre>
 					<tbody>
 						<tr><td>Nama alat</td><td>Menggunakan ChatGPT dan Gemini</td></tr>
 						<tr><td>Tujuan</td><td>Menggunakan ChatGpt untuk memberi Kode perhitungan Yang Benar , dan Gemini Untuk memberikan Promp template untuk Github Page</td></tr>
-						<tr><td>Prompt utama</td><td>[Tuliskan prompt yang relevan, atau nyatakan tidak ada.]</td></tr>
-						<tr><td>Bagian hasil yang digunakan</td><td>Buatkan saya template HTML untuk github page</td></tr>
-						<tr><td>Pemeriksaan dan perubahan mahasiswa</td><td>[Jelaskan cara memeriksa, menguji, dan mengubah hasil sebelum digunakan.]</td></tr>
+						<tr><td>Prompt utama</td><td>Buatkan saya template HTML untuk github page</td></tr>
+						<tr><td>Bagian hasil yang digunakan</td><td>Menggunakan template HTML yang dihasilkan oleh Gemini dan Perhitungan yang dibuat oleh chatgpt code C++</td></tr>
+						<tr><td>Pemeriksaan dan perubahan mahasiswa</td><td>Sebelum diuji kami membuat Backup file sebelum menguji hasil prompt dari prompt gemini banyak Tambahan dari AI yang tidak diperlukan dan beberapa template menggunakan Teks dengan arti yang sama. dan penggunaan chatgpt yang membuat code perhitungan sangat tidak friendly user dimana inputan cout nya harus diubah</td></tr>
 					</tbody>
 				</table>
 			</div>
-			<div class="callout"><strong>Catatan:</strong> pastikan seluruh kode, penjelasan, hasil uji, dan pernyataan penggunaan alat telah diperiksa serta dipahami oleh anggota kelompok.</div>
 		</section>
 	</main>
 
