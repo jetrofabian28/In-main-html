@@ -952,28 +952,33 @@ int main() {
 
     return 0;
 }</pre>
-					<p class="small-note">
-Fungsi
-• perbaruiRekap(rekap, paket): menambahkan satu paket ke rekap (rekap dikirim sebagai referensi &, paket sebagai const &).
-• tampilkanRekapitulasi(rekap): mencetak laporan akhir.
-• main(): membaca masukan, menghitung biaya (Modul A), lalu memanggil kedua fungsi di atas.
-• Fungsi bawaan: ceil() membulatkan ke atas, max() memilih nilai terbesar, isfinite() memeriksa angka valid, toupper() mengubah ke huruf besar.
-
-Variabel
-• Pencacah (int, awal 0): zonaA, zonaB, zonaC, reguler, prioritas, menggunakanBeratVolumetrik.
-• Akumulator (double, awal 0): totalBeratAktual, totalBeratTagihan, totalAsuransi, totalPendapatan.
-• Pelacak nilai tertinggi: biayaTertinggi (awal -1) dan nomorPaketBiayaTertinggi (awal "-").
-• Konstanta tarif: tarifZonaA, tarifZonaB, tarifZonaC.
-
-Percabangan
-• if - else if - else: memilih pencacah zona (A, B, C) dan tarif zona.
-• if - else: memilih pencacah reguler atau prioritas.
-• if: menambah pencacah berat volumetrik (beratVolumetrik > beratAktual), memperbarui biaya tertinggi (totalBiaya > biayaTertinggi), menghitung asuransi bila Y, dan memvalidasi masukan.
-• Operator ternary ? :: menentukan biaya tambahan layanan prioritas.
-
-Perulangan
-• for (int i = 1; i <= jumlah_paket; ++i): memproses satu paket per putaran dan memperbarui rekap di dalamnya, sehingga tidak perlu array. Rekap dicetak sekali setelah perulangan selesai.</p>
-				</article>
+			<div class="penjelasan-kode">
+<h4>Fungsi</h4>
+<ul>
+<li><code>perbaruiRekap(rekap, paket)</code>: menambahkan satu paket ke rekap (<code>rekap</code> dikirim sebagai referensi <code>&amp;</code>, <code>paket</code> sebagai <code>const &amp;</code>).</li>
+<li><code>tampilkanRekapitulasi(rekap)</code>: mencetak laporan akhir.</li>
+<li><code>main()</code>: membaca masukan, menghitung biaya (Modul A), lalu memanggil kedua fungsi di atas.</li>
+<li>Fungsi bawaan: <code>ceil()</code> membulatkan ke atas, <code>max()</code> memilih nilai terbesar, <code>isfinite()</code> memeriksa angka valid, <code>toupper()</code> mengubah ke huruf besar.</li>
+</ul>
+<h4>Variabel</h4>
+<ul>
+<li>Pencacah (<code>int</code>, awal 0): <code>zonaA</code>, <code>zonaB</code>, <code>zonaC</code>, <code>reguler</code>, <code>prioritas</code>, <code>menggunakanBeratVolumetrik</code>.</li>
+<li>Akumulator (<code>double</code>, awal 0): <code>totalBeratAktual</code>, <code>totalBeratTagihan</code>, <code>totalAsuransi</code>, <code>totalPendapatan</code>.</li>
+<li>Pelacak nilai tertinggi: <code>biayaTertinggi</code> (awal -1) dan <code>nomorPaketBiayaTertinggi</code> (awal "-").</li>
+<li>Konstanta tarif: <code>tarifZonaA</code>, <code>tarifZonaB</code>, <code>tarifZonaC</code>.</li>
+</ul>
+<h4>Percabangan</h4>
+<ul>
+<li><code>if - else if - else</code>: memilih pencacah zona (A, B, C) dan tarif zona.</li>
+<li><code>if - else</code>: memilih pencacah reguler atau prioritas.</li>
+<li><code>if</code>: menambah pencacah berat volumetrik (<code>beratVolumetrik &gt; beratAktual</code>), memperbarui biaya tertinggi (<code>totalBiaya &gt; biayaTertinggi</code>), menghitung asuransi bila Y, dan memvalidasi masukan.</li>
+<li>Operator ternary <code>? :</code>: menentukan biaya tambahan layanan prioritas.</li>
+</ul>
+<h4>Perulangan</h4>
+<ul>
+<li><code>for (int i = 1; i &lt;= jumlah_paket; ++i)</code>: memproses satu paket per putaran dan memperbarui rekap di dalamnya, sehingga tidak perlu array. Rekap dicetak sekali setelah perulangan selesai.</li>
+</ul>
+</div>
 			</div>
 			<div class="callout"><strong>Hasil eksekusi dan pengujian Modul B:</strong> lampirkan tangkapan layar hasil program dan catat input, hasil yang diharapkan, hasil aktual, serta status pengujian.</div>
 		</section>
