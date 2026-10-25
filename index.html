@@ -952,7 +952,27 @@ int main() {
 
     return 0;
 }</pre>
-					<p class="small-note">Jelaskan fungsi bagian penting, variabel, percabangan, atau perulangan yang digunakan.</p>
+					<p class="small-note">
+Fungsi
+• perbaruiRekap(rekap, paket): menambahkan satu paket ke rekap (rekap dikirim sebagai referensi &, paket sebagai const &).
+• tampilkanRekapitulasi(rekap): mencetak laporan akhir.
+• main(): membaca masukan, menghitung biaya (Modul A), lalu memanggil kedua fungsi di atas.
+• Fungsi bawaan: ceil() membulatkan ke atas, max() memilih nilai terbesar, isfinite() memeriksa angka valid, toupper() mengubah ke huruf besar.
+
+Variabel
+• Pencacah (int, awal 0): zonaA, zonaB, zonaC, reguler, prioritas, menggunakanBeratVolumetrik.
+• Akumulator (double, awal 0): totalBeratAktual, totalBeratTagihan, totalAsuransi, totalPendapatan.
+• Pelacak nilai tertinggi: biayaTertinggi (awal -1) dan nomorPaketBiayaTertinggi (awal "-").
+• Konstanta tarif: tarifZonaA, tarifZonaB, tarifZonaC.
+
+Percabangan
+• if - else if - else: memilih pencacah zona (A, B, C) dan tarif zona.
+• if - else: memilih pencacah reguler atau prioritas.
+• if: menambah pencacah berat volumetrik (beratVolumetrik > beratAktual), memperbarui biaya tertinggi (totalBiaya > biayaTertinggi), menghitung asuransi bila Y, dan memvalidasi masukan.
+• Operator ternary ? :: menentukan biaya tambahan layanan prioritas.
+
+Perulangan
+• for (int i = 1; i <= jumlah_paket; ++i): memproses satu paket per putaran dan memperbarui rekap di dalamnya, sehingga tidak perlu array. Rekap dicetak sekali setelah perulangan selesai.</p>
 				</article>
 			</div>
 			<div class="callout"><strong>Hasil eksekusi dan pengujian Modul B:</strong> lampirkan tangkapan layar hasil program dan catat input, hasil yang diharapkan, hasil aktual, serta status pengujian.</div>
