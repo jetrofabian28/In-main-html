@@ -693,7 +693,52 @@ Terdapat aturan batas bawah (minimum), jika hasil 1% kurang dari Rp 5.000, maka 
 					<span class="card-label">Logika program</span>
 					<h3>Pseudocode</h3>
 					<pre class="code-placeholder">MULAI
-  [tulis langkah pseudocode Modul B]
+  zonaA ← 0, zonaB ← 0, zonaC ← 0
+  paketReguler ← 0, paketPrioritas ← 0, paketVolumetrik ← 0
+  sumBeratAktual ← 0, sumBeratTagihan ← 0
+  sumAsuransi ← 0, sumPendapatan ← 0
+  biayaMaks ← -1, paketMaks ← "-"
+
+  BACA jumlahPaket
+  JIKA jumlahPaket <= 0 MAKA
+    TAMPILKAN pesan kesalahan
+    SELESAI
+  AKHIR JIKA
+
+  UNTUK i ← 1 SAMPAI jumlahPaket LAKUKAN
+    BACA data paket ke-i (Modul A)
+    HITUNG beratVolumetrik, beratTagihan, biayaAsuransi, totalBiaya
+
+    JIKA zona = "A" MAKA
+      zonaA ← zonaA + 1
+    SELAIN ITU JIKA zona = "B" MAKA
+      zonaB ← zonaB + 1
+    SELAIN ITU
+      zonaC ← zonaC + 1
+    AKHIR JIKA
+
+    JIKA layanan = Reguler MAKA
+      paketReguler ← paketReguler + 1
+    SELAIN ITU
+      paketPrioritas ← paketPrioritas + 1
+    AKHIR JIKA
+
+    JIKA beratVolumetrik > beratAktual MAKA
+      paketVolumetrik ← paketVolumetrik + 1
+    AKHIR JIKA
+
+    sumBeratAktual ← sumBeratAktual + beratAktual
+    sumBeratTagihan ← sumBeratTagihan + beratTagihan
+    sumAsuransi ← sumAsuransi + biayaAsuransi
+    sumPendapatan ← sumPendapatan + totalBiaya
+
+    JIKA totalBiaya > biayaMaks MAKA
+      biayaMaks ← totalBiaya
+      paketMaks ← nomorPaket
+    AKHIR JIKA
+  AKHIR UNTUK
+
+  TAMPILKAN rekapitulasi pengiriman
 SELESAI</pre>
 				</article>
 				<article class="card">
