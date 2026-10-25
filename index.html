@@ -1129,36 +1129,655 @@ Paket dengan biaya tertinggi: PKT003 (Rp 70400.00)</pre>
 			<div class="grid grid-three">
 				<article class="card"><span class="card-label">Pembagian pekerjaan</span><p class="placeholder">kami bekerja dengan memberikan tugas masing-masing mengerjakan 1 modul dimana Fabian Jethro Falah Mengerjakan Modul A dan Aning Dwi Setyowati Mengerjakan Modul B</p></article>
 				<article class="card"><span class="card-label">Kontribusi anggota</span><p class="placeholder">
-Fabian Jethro Falah:
-1. Menyusun alur input satu paket. Program membaca nilai barang, nomor paket, berat aktual, panjang, lebar, tinggi, zona tujuan, jenis pelayanan, dan pilihan asuransi.
-2. Menerapkan logika berat tagihan. Berat volumetrik dihitung dengan rumus (p × l × t) / 6000, dibandingkan dengan berat aktual memakai max(), lalu dibulatkan ke atas dengan ceil().
-3. Menentukan tarif per zona. Zona A Rp 8.000, B Rp 12.000, dan C Rp 18.000 per kg, dengan toupper() agar huruf kecil tetap diterima.
-4. Menghitung biaya tambahan pelayanan. Layanan prioritas dikenai 40% dari biaya dasar, layanan reguler tanpa tambahan.
-5. Menghitung asuransi. Besarnya 1% dari nilai barang dengan batas minimum Rp 5.000.
-6. Menampilkan hasil. Program mencetak rincian biaya dasar, biaya tambahan, biaya asuransi, dan total biaya.
-Penanganan input tidak valid dasar. Program berhenti dengan pesan jika zona atau jenis pelayanan tidak sesuai.
-Aning Dwi Setyowati:
-1. Menambahkan perulangan multi paket. Program meminta jumlah paket lebih dahulu, lalu memproses setiap paket dengan for.
-2. Membuat struct RekapPengiriman. Struktur ini menampung seluruh data rekap: jumlah per zona, jumlah per jenis layanan, total berat, total asuransi, total pendapatan, dan paket dengan biaya tertinggi.
-3. Memperkuat validasi input. Setiap masukan diperiksa, mencakup kegagalan cin, nilai tidak terbatas (isfinite), berat dan dimensi yang harus lebih dari 0, nilai barang yang tidak boleh negatif, serta pilihan asuransi yang harus Y atau N.
-4. Meningkatkan keamanan kode. Penggunaan static_cast<unsigned char> sebelum toupper(), const pada hasil perhitungan, dan cerr untuk pesan kesalahan.
-5. Menambahkan pelacakan berat volumetrik. Program menghitung berapa paket yang tagihannya ditentukan oleh berat volumetrik, bukan berat aktual.
-6. Mencari paket dengan biaya tertinggi. Program membandingkan total biaya setiap paket dan menyimpan nomor paketnya.
-7. Membuat laporan rekapitulasi akhir. Ringkasan seluruh pengiriman dicetak setelah semua paket diproses, dengan format dua desimal lewat fixed dan setprecision(2).
-</p></article>
-				<article class="card"><span class="card-label">Bagian tersulit</span><p class="placeholder">Menentukan tarif zona dan jenis pelayanan memakai rantai if / else if / else. sering bingung kapan program harus berhenti (return 1) dan kapan boleh lanjut. Selain itu, ada kebiasaan lupa mempertimbangkan input huruf kecil, itulah gunanya toupper().</p></article>
-				<article class="card"><span class="card-label">Kesalahan dan perbaikan</span><p class="placeholder">Kesalahan Fatal dan perbaikan yang saya buat[modul A] adalah lupa mendeklarasi sebuah variabel sebelun nelakukan perhitungan.</p></article>
-				<article class="card"><span class="card-label">Pengetahuan yang diperoleh</span><p class="placeholder">Melalui pembuatan Modul B, programmer memperoleh pemahaman tentang cara mengubah program satu paket menjadi pemrosesan banyak data dengan perulangan for, termasuk perbedaan scope antara variabel per paket di dalam perulangan dan data rekap yang bertahan di luarnya. Programmer juga belajar mengelompokkan data berhubungan dengan struct, menerapkan pola akumulasi dan pencarian nilai tertinggi, serta menulis validasi input yang defensif memakai !(cin >> x), isfinite(), dan pemeriksaan rentang nilai. Selain itu, programmer mengenal praktik kode yang lebih aman dan rapi, seperti toupper dengan static_cast<unsigned char>, const, operator ternary, konstanta tarif untuk menghindari magic number, dan format output dengan fixed serta setprecision(2). Dari kelemahan kode ini, yaitu rekap zona yang diperbarui sebelum seluruh input valid dan seluruh logika yang masih berada di dalam main(), programmer juga menyadari pentingnya urutan operasi dan pemecahan kode menjadi fungsi pada tahap integrasi.</p></article>
-				<article class="card"><span class="card-label">Rencana pengembangan UAS</span><p class="placeholder">
-1. Data tersimpan dalam array of objects. Di UTS, data paket hilang setelah dihitung. Di UAS, paket disimpan selama program berjalan, sehingga bisa ditampilkan, dicari, dan diubah.
-2. Program berbasis menu yang berulang. Pengguna tidak lagi menjalankan program sekali jalan.
-3. Validasi tidak lagi menghentikan program. Di UTS, input salah langsung return 1. Di UAS, input diulang atau ditolak dengan pesan, lalu kembali ke menu.
-4. Struktur OOP. Logika di main() dipindahkan ke class: Paket (parent), PaketReguler dan PaketPrioritas (child), serta PengirimanManager.
-5. Perbaikan bug rekap Modul B. Rekap kini dihitung dari data array, sehingga tidak ada pembaruan sebelum data valid.
-6. Fitur baru: pencarian nomor paket, status pengiriman, ubah data, dan penolakan nomor paket duplikat.</p></article>
-			</div>
-		</section>
+  <!-- ANGGOTA 1 -->
+  <article class="contribution-card">
+    <div class="member-header">
+      <span class="member-number">01</span>
+      <div>
+        <h3>Fabian Jethro Falah</h3>
+        <p class="member-role">
+          Modul A — Perhitungan Biaya Pengiriman Paket
+        </p>
+      </div>
+    </div>
 
+    <p class="member-description">
+      Bertanggung jawab mengembangkan modul perhitungan biaya
+      pengiriman untuk satu paket. Pekerjaan meliputi penerimaan
+      input, penentuan berat tagihan, pemilihan tarif berdasarkan
+      zona tujuan, perhitungan biaya tambahan, serta penampilan
+      rincian biaya yang harus dibayar pengguna.
+    </p>
+
+    <div class="task-list">
+
+      <div class="task-item">
+        <span class="task-number">1</span>
+        <div>
+          <h4>Menyusun Alur Input Satu Paket</h4>
+          <p>
+            Membuat alur input agar program dapat membaca nilai
+            barang, nomor paket, berat aktual, panjang, lebar,
+            tinggi, zona tujuan, jenis pelayanan, dan pilihan
+            asuransi. Data tersebut digunakan sebagai dasar
+            perhitungan biaya pengiriman.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <span class="task-number">2</span>
+        <div>
+          <h4>Menerapkan Logika Berat Tagihan</h4>
+          <p>
+            Menghitung berat volumetrik menggunakan rumus
+            (panjang × lebar × tinggi) / 6000. Hasilnya
+            dibandingkan dengan berat aktual menggunakan fungsi
+            max(). Nilai yang lebih besar digunakan sebagai
+            dasar penentuan berat tagihan, kemudian dibulatkan
+            ke atas sesuai aturan program.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <span class="task-number">3</span>
+        <div>
+          <h4>Menentukan Tarif Berdasarkan Zona</h4>
+          <p>
+            Mengatur tarif pengiriman berdasarkan zona tujuan,
+            yaitu Zona A sebesar Rp8.000 per kg, Zona B sebesar
+            Rp12.000 per kg, dan Zona C sebesar Rp18.000 per kg.
+            Fungsi toupper() digunakan agar input zona dengan
+            huruf kecil tetap dapat dikenali.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <span class="task-number">4</span>
+        <div>
+          <h4>Menghitung Biaya Tambahan Pelayanan</h4>
+          <p>
+            Menerapkan biaya tambahan sebesar 40% dari biaya
+            dasar apabila pengguna memilih layanan prioritas.
+            Sementara itu, layanan reguler tidak dikenai biaya
+            tambahan pelayanan.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <span class="task-number">5</span>
+        <div>
+          <h4>Menghitung Biaya Asuransi</h4>
+          <p>
+            Menghitung biaya asuransi sebesar 1% dari nilai
+            barang dengan biaya minimum Rp5.000. Biaya ini
+            diterapkan apabila pengguna memilih opsi asuransi,
+            sehingga total biaya mencerminkan layanan yang
+            digunakan oleh pengirim.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <span class="task-number">6</span>
+        <div>
+          <h4>Menampilkan Rincian Hasil Perhitungan</h4>
+          <p>
+            Menampilkan hasil perhitungan berupa biaya dasar,
+            biaya tambahan pelayanan, biaya asuransi, dan total
+            biaya pengiriman. Rincian ini membantu pengguna
+            memahami komponen pembentuk biaya setiap paket.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="member-note">
+      <h4>Penanganan Input Tidak Valid</h4>
+      <p>
+        Program memberikan pesan kesalahan dan menghentikan
+        proses apabila zona tujuan atau jenis pelayanan tidak
+        sesuai dengan pilihan yang diperbolehkan.
+      </p>
+    </div>
+  </article>
+
+  <!-- ANGGOTA 2 -->
+  <article class="contribution-card">
+    <div class="member-header">
+      <span class="member-number">02</span>
+      <div>
+        <h3>Aning Dwi Setyowati</h3>
+        <p class="member-role">
+          Modul B — Rekapitulasi dan Kondisi Akhir
+        </p>
+      </div>
+    </div>
+
+    <p class="member-description">
+      Bertanggung jawab mengembangkan pengolahan banyak paket,
+      validasi masukan, pencatatan data rekapitulasi, pelacakan
+      berat volumetrik, pencarian paket dengan biaya tertinggi,
+      dan penyusunan laporan akhir seluruh pengiriman.
+    </p>
+
+    <div class="task-list">
+
+      <div class="task-item">
+        <span class="task-number">1</span>
+        <div>
+          <h4>Menambahkan Perulangan Multi-Paket</h4>
+          <p>
+            Membuat program meminta jumlah paket terlebih dahulu.
+            Setelah itu, setiap paket diproses menggunakan
+            perulangan for. Dengan cara ini, pengguna dapat
+            menghitung beberapa paket dalam satu kali eksekusi
+            tanpa menjalankan program berulang kali.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <span class="task-number">2</span>
+        <div>
+          <h4>Membuat Struktur Data RekapPengiriman</h4>
+          <p>
+            Membuat struktur RekapPengiriman untuk menyimpan
+            informasi rekapitulasi, meliputi jumlah paket per
+            zona, jumlah paket per jenis layanan, total berat,
+            total asuransi, total pendapatan, dan informasi
+            paket dengan biaya tertinggi.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <span class="task-number">3</span>
+        <div>
+          <h4>Memperkuat Validasi Input</h4>
+          <p>
+            Memeriksa setiap masukan, termasuk kegagalan
+            pembacaan cin, nilai tidak terbatas atau infinite,
+            berat dan dimensi yang harus lebih dari nol, serta
+            nilai barang sesuai ketentuan program. Validasi
+            membantu mencegah data yang tidak sesuai diproses
+            lebih lanjut.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <span class="task-number">4</span>
+        <div>
+          <h4>Meningkatkan Keamanan dan Kerapian Kode</h4>
+          <p>
+            Menggunakan static_cast&lt;unsigned char&gt; sebelum
+            toupper() untuk membantu menghindari masalah konversi
+            karakter. const digunakan untuk nilai yang tidak
+            perlu diubah, sedangkan cerr digunakan untuk
+            menampilkan pesan kesalahan.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <span class="task-number">5</span>
+        <div>
+          <h4>Menambahkan Pelacakan Berat Volumetrik</h4>
+          <p>
+            Menghitung jumlah paket yang berat tagihannya
+            ditentukan oleh berat volumetrik, bukan berat
+            aktual. Informasi ini berguna untuk mengetahui
+            seberapa besar pengaruh dimensi paket terhadap
+            perhitungan biaya pengiriman.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <span class="task-number">6</span>
+        <div>
+          <h4>Mencari Paket dengan Biaya Tertinggi</h4>
+          <p>
+            Membandingkan total biaya setiap paket yang
+            diproses, kemudian menyimpan nomor paket dengan
+            biaya tertinggi. Hasil perbandingan tersebut
+            ditampilkan dalam laporan akhir untuk memudahkan
+            identifikasi paket dengan biaya pengiriman terbesar.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-item">
+        <span class="task-number">7</span>
+        <div>
+          <h4>Membuat Laporan Rekapitulasi Akhir</h4>
+          <p>
+            Menampilkan ringkasan setelah semua paket selesai
+            diproses. Laporan mencakup jumlah paket, jumlah
+            per zona, jumlah per jenis layanan, total berat,
+            total asuransi, total pendapatan, dan paket dengan
+            biaya tertinggi. Format fixed dan setprecision(2)
+            digunakan untuk menampilkan dua angka di belakang
+            koma pada nilai numerik.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- KOLABORASI KELOMPOK -->
+  <article class="collaboration-card">
+    <h3>Kolaborasi Antaranggota</h3>
+    <p>
+      Kedua anggota memiliki tanggung jawab yang saling
+      melengkapi. Fabian Jethro Falah mengembangkan proses
+      perhitungan biaya untuk setiap paket, sedangkan Aning
+      Dwi Setyowati mengembangkan proses rekapitulasi dari
+      seluruh paket yang telah diproses.
+    </p>
+    <p>
+      Integrasi kedua modul membutuhkan kesesuaian data,
+      rumus perhitungan, dan alur pemrosesan. Dengan pembagian
+      pekerjaan tersebut, program diharapkan dapat menghitung
+      biaya setiap paket secara tepat sekaligus menghasilkan
+      laporan rekapitulasi yang terstruktur.
+    </p>
+  </article>
+</section>
+</p></article>
+				<article class="card"><span class="card-label">Bagian tersulit</span><p class="placeholder">
+      Selama mengembangkan Sistem Perhitungan Biaya Pengiriman
+      Paket, terdapat beberapa tantangan dalam logika program,
+      validasi input, pengelolaan data, dan integrasi antarmodul.
+    </p>
+  </div>
+
+  <div class="challenge-table-wrapper">
+    <table class="challenge-table">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Tantangan</th>
+          <th>Modul</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>
+            <strong>Validasi sembilan masukan paket</strong>
+            <p>
+              Satu paket membutuhkan sembilan masukan, dan setiap
+              masukan memiliki aturan tersendiri, seperti angka
+              positif, zona A/B/C, pilihan layanan 1 atau 2,
+              serta pilihan asuransi Y atau N. Tantangannya adalah
+              memastikan semua masukan valid sebelum perhitungan
+              dilanjutkan.
+            </p>
+          </td>
+          <td><span class="module-tag">A</span></td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>
+            <strong>Pembulatan berat tagihan</strong>
+            <p>
+              Pembulatan berat tagihan ke atas dapat keliru
+              akibat ketelitian bilangan desimal. Contohnya,
+              nilai 5,0000000001 dapat dibulatkan menjadi 6,
+              padahal secara perhitungan nilai tersebut sangat
+              dekat dengan 5. Oleh karena itu, logika pembulatan
+              perlu diuji dengan berbagai nilai.
+            </p>
+          </td>
+          <td><span class="module-tag">A</span></td>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td>
+            <strong>Menentukan waktu pembaruan rekapitulasi</strong>
+            <p>
+              Rekapitulasi harus diperbarui pada waktu yang tepat,
+              yaitu setelah data paket berhasil diproses.
+              Data yang tidak valid tidak boleh menambah jumlah
+              paket maupun total biaya dalam rekapitulasi.
+            </p>
+          </td>
+          <td><span class="module-tag">B</span></td>
+        </tr>
+
+        <tr>
+          <td>4</td>
+          <td>
+            <strong>Menentukan nilai awal biaya tertinggi</strong>
+            <p>
+              Program harus memiliki nilai awal yang tepat saat
+              mencari paket dengan biaya tertinggi. Nilai awal
+              yang tidak sesuai dapat menyebabkan hasil
+              perbandingan keliru. Karena itu, pencarian perlu
+              disesuaikan dengan data paket pertama yang berhasil
+              diproses.
+            </p>
+          </td>
+          <td><span class="module-tag">B</span></td>
+        </tr>
+
+        <tr>
+          <td>5</td>
+          <td>
+            <strong>Mengintegrasikan dua modul</strong>
+            <p>
+              Menyatukan Modul A dan Modul B tanpa membuat
+              keduanya saling bergantung secara berlebihan.
+              Modul A menangani perhitungan satu paket,
+              sedangkan Modul B mengelola banyak paket dan
+              rekapitulasi. Keduanya perlu menggunakan aturan
+              perhitungan dan format data yang konsisten.
+            </p>
+          </td>
+          <td>
+            <span class="module-tag">A dan B</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>6</td>
+          <td>
+            <strong>Menyajikan flowchart dan dokumentasi GitHub Pages</strong>
+            <p>
+              Tantangan lainnya adalah menyusun flowchart,
+              penjelasan proses, hasil eksekusi, dan tabel
+              pengujian ke dalam halaman GitHub Pages agar
+              informasi mudah dibaca dan memiliki struktur
+              yang konsisten.
+            </p>
+          </td>
+          <td>
+            <span class="module-tag">A dan B</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TANTANGAN LOGIKA PROGRAM -->
+  <article class="difficulty-card">
+    <div class="difficulty-heading">
+      <span class="difficulty-icon">!</span>
+      <div>
+        <h3>Tantangan Logika Kondisi dan Validasi Input</h3>
+        <p class="difficulty-subtitle">
+          Penjelasan tambahan
+        </p>
+      </div>
+    </div>
+
+    <p>
+      Salah satu bagian yang cukup sulit adalah menentukan
+      tarif zona dan jenis pelayanan menggunakan rantai
+      <code>if / else if / else</code>. Sering muncul kebingungan
+      dalam menentukan kondisi yang harus dipenuhi, kapan
+      program harus dihentikan menggunakan <code>return 1</code>,
+      dan kapan program masih boleh melanjutkan proses.
+    </p>
+
+    <p>
+      Selain itu, input berupa huruf kecil terkadang terlupakan
+      dalam proses validasi. Misalnya, pengguna memasukkan
+      <code>a</code> untuk zona atau <code>y</code> untuk asuransi,
+      sedangkan program hanya memeriksa huruf kapital. Untuk
+      mengatasi masalah tersebut, fungsi <code>toupper()</code>
+      digunakan untuk mengubah karakter menjadi huruf kapital
+      sebelum dilakukan pemeriksaan.
+    </p>
+
+    <div class="difficulty-points">
+      <div class="difficulty-point">
+        <h4>1. Rantai if / else if / else</h4>
+        <p>
+          Setiap kondisi harus disusun dengan urutan yang tepat.
+          Jika zona A, B, atau C ditemukan, program menetapkan
+          tarif yang sesuai. Jika tidak ada kondisi yang cocok,
+          program menampilkan pesan kesalahan.
+        </p>
+      </div>
+
+      <div class="difficulty-point">
+        <h4>2. Menentukan penggunaan return 1</h4>
+        <p>
+          <code>return 1</code> digunakan untuk mengakhiri
+          program dengan status kegagalan ketika input tidak
+          valid dan program memang dirancang untuk berhenti.
+          Jika input valid, program dapat melanjutkan ke proses
+          perhitungan berikutnya.
+        </p>
+      </div>
+
+      <div class="difficulty-point">
+        <h4>3. Mengatasi input huruf kecil</h4>
+        <p>
+          Fungsi <code>toupper()</code> membantu menyamakan
+          karakter huruf kecil dan kapital sebelum validasi,
+          sehingga input seperti <code>a</code> dan
+          <code>A</code> dapat diperlakukan secara konsisten.
+        </p>
+      </div>
+    </div>
+  </article>
+</section></p></article>
+				<article class="card"><span class="card-label">Kesalahan dan perbaikan</span><p class="placeholder">
+      Beberapa hal yang perlu diperhatikan selama pengerjaan
+      program serta solusi untuk menjaga ketepatan perhitungan
+      dan rekapitulasi biaya pengiriman paket.
+    </p>
+  </div>
+
+  <div class="error-list">
+
+    <article class="error-card">
+      <span class="error-number">01</span>
+      <div class="error-content">
+        <h3>Validasi Input Paket</h3>
+        <p>
+          <strong>Kesalahan:</strong> Input yang tidak sesuai,
+          seperti zona selain A/B/C, layanan selain 1/2, atau
+          nilai berat dan dimensi yang tidak positif, dapat
+          menyebabkan proses perhitungan tidak valid.
+        </p>
+        <p>
+          <strong>Perbaikan:</strong> Memeriksa setiap masukan
+          sebelum perhitungan dimulai. Fungsi toupper() digunakan
+          agar input huruf kecil tetap dapat dikenali.
+        </p>
+        <span class="error-module">Modul A</span>
+      </div>
+    </article>
+
+    <article class="error-card">
+      <span class="error-number">02</span>
+      <div class="error-content">
+        <h3>Ketepatan Pembulatan Berat</h3>
+        <p>
+          <strong>Kesalahan:</strong> Nilai berat volumetrik
+          atau berat aktual dapat menghasilkan berat tagihan
+          yang keliru apabila logika pembulatan ke atas
+          tidak diterapkan dengan tepat.
+        </p>
+        <p>
+          <strong>Perbaikan:</strong> Membandingkan berat aktual
+          dengan berat volumetrik, mengambil nilai terbesar,
+          lalu menerapkan pembulatan ke atas sesuai aturan.
+          Pengujian dilakukan pada nilai bulat dan desimal.
+        </p>
+        <span class="error-module">Modul A</span>
+      </div>
+    </article>
+
+    <article class="error-card">
+      <span class="error-number">03</span>
+      <div class="error-content">
+        <h3>Pembaruan Rekapitulasi</h3>
+        <p>
+          <strong>Kesalahan:</strong> Data paket yang belum
+          berhasil dihitung dapat menyebabkan total berat,
+          jumlah paket, atau pendapatan menjadi tidak akurat.
+        </p>
+        <p>
+          <strong>Perbaikan:</strong> Rekapitulasi hanya
+          diperbarui setelah paket berhasil divalidasi dan
+          dihitung. Hasil perhitungan diteruskan melalui
+          struct HasilPaket ke Modul B.
+        </p>
+        <span class="error-module">Modul B</span>
+      </div>
+    </article>
+
+    <article class="error-card">
+      <span class="error-number">04</span>
+      <div class="error-content">
+        <h3>Integrasi dan Pencarian Biaya Tertinggi</h3>
+        <p>
+          <strong>Kesalahan:</strong> Perbedaan alur perhitungan
+          antar modul atau nilai awal yang tidak tepat dapat
+          menyebabkan laporan akhir tidak sesuai.
+        </p>
+        <p>
+          <strong>Perbaikan:</strong> Menyamakan aturan
+          perhitungan Modul A dan Modul B, menentukan nilai
+          awal pencarian biaya tertinggi dengan tepat, lalu
+          menguji hasil per paket dan rekapitulasi akhir.
+        </p>
+        <span class="error-module">Modul A dan B</span>
+      </div>
+    </article>
+
+  </div>
+</section></p></article>
+				<article class="card"><span class="card-label">Pengetahuan yang diperoleh</span><p class="placeholder">
+    <div class="knowledge-list">
+        <div class="knowledge-card">
+            <h3>1. Merancang Sebelum Menulis Kode</h3>
+            <p>
+                Mengubah aturan perhitungan biaya pengiriman menjadi
+                algoritma deskriptif, pseudocode, dan flowchart
+                sebelum diimplementasikan ke dalam program C++.
+            </p>
+        </div>
+
+        <div class="knowledge-card">
+            <h3>2. Memakai Struct dan Fungsi</h3>
+            <p>
+                Mengelompokkan data menggunakan <code>struct</code>
+                dan memisahkan proses input, perhitungan biaya,
+                serta rekapitulasi ke dalam fungsi tersendiri.
+            </p>
+        </div>
+
+        <div class="knowledge-card">
+            <h3>3. Validasi Masukan</h3>
+            <p>
+                Memeriksa masukan yang bukan angka, nilai di luar
+                batas, dan pilihan yang tidak sesuai agar program
+                menghasilkan perhitungan yang benar.
+            </p>
+        </div>
+
+        <div class="knowledge-card">
+            <h3>4. Menelusuri Program dengan Trace Table</h3>
+            <p>
+                Mencatat perubahan nilai variabel secara bertahap
+                untuk membandingkan hasil program dengan
+                perhitungan manual.
+            </p>
+        </div>
+
+        <div class="knowledge-card">
+            <h3>5. Merancang Pengujian</h3>
+            <p>
+                Menguji data valid, nilai batas, masukan tidak valid,
+                serta integrasi Modul A dan Modul B untuk memastikan
+                seluruh proses berjalan sesuai kebutuhan.
+            </p>
+        </div>
+
+        <div class="knowledge-card">
+            <h3>6. Dokumentasi dan GitHub</h3>
+            <p>
+                Mempelajari penulisan dokumentasi Markdown,
+                pembuatan flowchart menggunakan Mermaid, serta
+                pengunggahan kode dan dokumen ke repository GitHub
+                dan penyusunan halaman GitHub Pages.
+            </p>
+        </div>
+    </div>
+</section></p></article>
+				<article class="card"><span class="card-label">Rencana pengembangan UAS</span><p class="placeholder">
+					Pengembangan lanjutan dari program perhitungan biaya
+            pengiriman paket agar lebih interaktif, aman, dan mudah digunakan.
+        </p>
+    </div>
+
+    <ol class="development-list">
+        <li>
+            <strong>Menyimpan Data Paket dalam Array atau Vector</strong>
+            <p>
+                Menyimpan seluruh data paket menggunakan array atau
+                <code>vector</code> dari <code>HasilPaket</code>, sehingga
+                data tetap tersedia selama program berjalan dan dapat
+                ditampilkan kembali.
+            </p>
+        </li>
+
+        <li>
+            <strong>Membuat Menu Program yang Berulang</strong>
+            <p>
+                Mengembangkan program berbasis menu agar pengguna dapat
+                menghitung paket, melihat rekapitulasi, mencari paket,
+                dan mengubah data tanpa menjalankan ulang program.
+            </p>
+        </li>
+
+        <li>
+            <strong>Meningkatkan Validasi Masukan</strong>
+            <p>
+                Menambahkan perulangan input menggunakan
+                <code>cin.clear()</code> dan <code>cin.ignore()</code>
+                agar masukan yang salah dapat diperbaiki tanpa
+                menghentikan program.
+            </p>
+        </li>
+
+        <li>
+            <strong>Menerapkan Struktur OOP</strong>
+            <p>
+                Memisahkan logika program ke dalam class
+                <code>Paket</code>, <code>PaketReguler</code>,
+                <code>PaketPrioritas</code>, dan
+                <code>PengirimanManager</code> agar kode lebih terstruktur
+                dan mudah dikembangkan.
+            </p>
+        </li>
+
+        <li>
+            <strong>Menambahkan Fitur Pencarian dan Pengelolaan Paket</strong>
+            <p>
+                Menambahkan pencarian berdasarkan nomor paket,
+                pengubahan data, status pengiriman, penolakan nomor
+                paket duplikat, serta perhitungan ulang rekapitulasi
+                berdasarkan seluruh data paket yang tersimpan.
+            </p>
+        </li>
+    </ol>
+</section>
 		<section class="section" id="penggunaan-ai" aria-labelledby="judul-ai">
 			<div class="section-heading">
 				<p class="eyebrow">07 · Pernyataan Penggunaan AI</p>
